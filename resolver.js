@@ -38,3 +38,31 @@ function renderizarExamen(){
    `).join('');
  
 }   
+
+function abrirModalEstudiante(idExamen) {
+    idExamenPendiente = idExamen;
+    const examen = obtenerExamen().find(e=> e.id === idExamen);
+    if (!examen) return;
+
+    document.getElementById('titulo-modal-examen').textContent = examen.titulo;
+    document.getElementById('campo-identificacion-estudiante').value = '';
+    document.getElementById('campo-nombre-estudiante').value='';
+    document.getElementById('modal-estudiante').classList.add('abierto');
+
+}
+
+function cerrarModalEstudiante() {
+    document.getElementById('modal-estudiante').classList.remove('abierto');
+    idExamenPendiente = null;
+}
+
+function comenzarExamen(){
+    const identificacion = document.getElementById('campo-identificacion-estudiante').value.trim();
+    const nombre = document.getElementById('campo-nombre-estudiante').value.trim();
+
+    if (!identificacion || !nombre){
+        mostrarNotificacion('ingresa tu identificacion y nombre.', 'error');
+        return;
+
+    }
+}

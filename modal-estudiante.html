@@ -1,0 +1,23 @@
+<!-- ════════════════════════════════════════
+     MODAL — DATOS DEL ESTUDIANTE
+     ════════════════════════════════════════ -->
+<div class="fondo-modal" id="modal-estudiante">
+  <div class="ventana-modal">
+    <h3 id="titulo-modal-examen">Nombre del examen</h3>
+    <p>Ingresa tus datos para comenzar. Estos quedarán asociados a tus respuestas.</p>
+
+    <div class="grupo-form">
+      <label class="etiqueta-form">Número de identificación</label>
+      <input class="campo-form" id="campo-identificacion-estudiante" placeholder="Ej: 12345678">
+    </div>
+    <div class="grupo-form">
+      <label class="etiqueta-form">Nombre completo</label>
+      <input class="campo-form" id="campo-nombre-estudiante" placeholder="Tu nombre completo">
+    </div>
+
+    <div class="acciones-form">
+      <button class="btn-secundario" onclick="cerrarModal()">Cancelar</button>
+      <button class="btn-enviar" onclick="comenzarExamen()">Comenzar examen</button>
+    </div>
+  </div>
+</div>
