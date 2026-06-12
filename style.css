@@ -228,3 +228,15 @@ select{
     padding: 0.25rem 1rem;
     border-radius: 1rem;
 }
+
+.main-container-bottom-right button:hover{
+    transform: scale(1.050);
+    transition: all 0.3s ease-in;
+    cursor: pointer;
+}
+
+.main-container-bottom-left button:hover{
+    transform: scale(1.050);
+    transition: all 0.3s ease-in;
+    cursor: pointer;
+}
