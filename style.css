@@ -161,7 +161,7 @@ input::placeholder{
     font-family: var(--font);
 }
 
-.main-container-bottom{
+.main-container-bottom-form{
     width: 92%;
     display: flex;
     justify-content: space-between;
@@ -194,4 +194,37 @@ select{
     font-family: var(--font);
     background-color: white;
     color: #6b7280;
+}
+
+.main-container-bottom{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.users{
+    width: 92%;
+    height: 90%;
+    border-radius: 0.25rem;
+    border: 1px solid #6b7280;
+}
+
+.users-top{
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+.users-top h6,p{
+    margin: 0;
+    font-size: 0.9rem;
+    font-family: var(--font);
+}
+
+.users p{
+    background-color: rgb(226, 223, 223);
+    padding: 0.25rem 1rem;
+    border-radius: 1rem;
 }
