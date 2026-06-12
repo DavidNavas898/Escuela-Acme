@@ -22,7 +22,7 @@ body{
     "header"
     "main"
     ;
-    grid-template-rows: 80px 1fr;
+    grid-template-rows: 50px 1fr;
     min-width: 390px;
     min-height: 100vh;
 }
@@ -55,31 +55,143 @@ body{
 
 .main{
     display: grid;
-    grid-template-rows: 100px 1fr 1fr;
+    grid-template-rows: 100px 1.9fr 1fr;
 
 }
 
 .main-head{
     display: flex;
     flex-direction: column;
+    width: 90%;
+    margin: 0 auto;
+    align-items: start;
+    padding: 0.5rem 0;
 }
 
 .main-head p{
     margin: 0;
-    padding: 0.5rem 1rem;
     color: var(--primary);
     font-size: 0.7rem;
     font-family: var(--font);
+    padding: 0.5rem 0;
 }
 
 .main-head h1{
     margin: 0;
     color: var(--primary);
     font-size: 1.3rem;
-    padding: 0.5rem 1rem;
     font-family: var(--font);
+}
+
+#main-head-subtitle{
+    font-size: 0.610rem;
+    font-weight: bold;
 }
 
 #main-head-gris{
     color: var(--secondary);  
+}
+
+.main-container-top{
+    display: flex;
+    justify-content: center;
+}
+
+.main-container-top-form{
+    width: 92%;
+    height: 100%;
+    border: 0.5px solid gray;
+    border-radius: 0.5rem;
+}
+
+.main-container-top-form h5{
+    margin: 0;
+    padding: 1rem 1rem 0.25rem 1rem;
+    font-family: var(--font);
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: var(--font);
+}
+
+form label{
+    font-size: 0.6rem;
+    padding: 0.3rem;
+    width: 93%;
+    font-weight: bold;
+}
+
+form input{
+    font-size: 0.8rem;
+    width: 92%;
+    padding: 0.3rem;
+    border: 1px solid #d1d5db;
+}
+
+.main-container-top-form-grid-inputs{
+    width: 92%;
+    margin-top: 0.5rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    font-weight: bold;
+}
+
+.main-container-top-form-grid-inputs-cards{
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    
+}
+
+.main-container-top-form-grid-inputs-cards input{
+    width: 100%;
+    border: 1px solid #d1d5db;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+input::placeholder{
+    color: var(--secondary);
+    font-size: 10px;
+    font-family: var(--font);
+}
+
+.main-container-bottom{
+    width: 92%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+.main-container-bottom-left button{
+    border-radius: 0.5rem;
+    padding: 0.5rem 1.5rem;
+    border: 1px solid black;
+    background-color: var(--card);
+    font-family: var(--font);
+}
+
+.main-container-bottom-right button{
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid black;
+    background-color: rgb(31, 30, 30);
+    color: white;
+    font-family: var(--font);
+}
+
+select{
+    width: 100%;
+    padding: 0.25rem;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-family: var(--font);
+    background-color: white;
+    color: #6b7280;
 }

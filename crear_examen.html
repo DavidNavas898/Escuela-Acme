@@ -19,9 +19,49 @@
         <section class="main-head">
             <p id="main-head-gris">Administrador / Usuarios</p>
             <h1>Gestion de usuarios</h1>
-            <p>Crea, actualiza y elimina cuentas con acceso a los modulos privados</p>
+            <p id="main-head-subtitle">Crea, actualiza y elimina cuentas con acceso a los modulos privados</p>
         </section>
-        <section class="first-card"></section>
+        <section class="main-container-top">
+            <div class="main-container-top-form">
+                <h5>Crear Usuarios</h5>
+                <form action="">
+                    <label for="name">Numero de identificacion</label>
+                    <input type="text" id="cedula" placeholder="Ej. 1123800585" required>
+                    <label for="name">Nombre</label>
+                    <input type="text" id="name" placeholder="Ej. David Navas" required>
+                    <div class="main-container-top-form-grid-inputs">
+                        <div class="main-container-top-form-grid-inputs-cards">
+                            <label for="email">Correo</label>
+                            <input type="email" id="email" placeholder="david@gmail.com" required>
+                        </div>
+                        <div class="main-container-top-form-grid-inputs-cards">
+                            <label for="telefono">Telefono</label>
+                            <input type="tel" id="telefono" placeholder="3053518339" required>
+                        </div>
+                        <div class="main-container-top-form-grid-inputs-cards">
+                            <label for="name">Cargo</label>
+                            <select id="cargo" name="cargo">
+                            <option value="administrativo">Administrativo</option>
+                            <option value="docente">Docente</option>
+                            <option value="estudiante">Estudiante</option>
+                            </select>
+                        </div>
+                        <div class="main-container-top-form-grid-inputs-cards">
+                            <label for="name">Contraseña</label>
+                            <input type="password" id="password" placeholder="********" required>
+                        </div>
+                    </div>
+                    <div class="main-container-bottom">
+                        <div class="main-container-bottom-left">
+                            <button>Limpiar</button>
+                        </div>
+                        <div class="main-container-bottom-right">
+                            <button>Crear Usuario</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
         <section></section>
     </main>
 
