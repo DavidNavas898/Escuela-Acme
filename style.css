@@ -161,7 +161,7 @@ input::placeholder{
     font-family: var(--font);
 }
 
-.main-container-bottom-form{
+#main-container-bottom-form{
     width: 92%;
     display: flex;
     justify-content: space-between;
@@ -182,6 +182,15 @@ input::placeholder{
     padding: 0.5rem 1rem;
     border: 1px solid black;
     background-color: rgb(31, 30, 30);
+    color: white;
+    font-family: var(--font);
+}
+
+.azul{
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid black;
+    background-color: rgb(5, 4, 48);
     color: white;
     font-family: var(--font);
 }
@@ -314,8 +323,15 @@ select{
     color: var(--danger);
     font-family: var(--font);
     padding: 0.1rem 0.3rem;
+    text-align: end;
+    width: 92%;
 }
 
 .inputError {
     border: 1px solid var(--danger) !important;
+}
+
+
+.esconder{
+    display: none;
 }
