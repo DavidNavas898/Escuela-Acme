@@ -1,0 +1,85 @@
+:root {
+  --background: #f8f8f8;
+  --card: #ffffff;
+  --primary: #111827;
+  --secondary: #6b7280;
+  --border: #e5e7eb;
+  --success: #22c55e;
+  --danger: #ef4444;
+
+  --font: "Inter", sans-serif;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-areas: 
+    "header"
+    "main"
+    ;
+    grid-template-rows: 80px 1fr;
+    min-width: 390px;
+    min-height: 100vh;
+}
+
+.header{
+    grid-area: header;
+    background-color: var(--background);
+    border-bottom: 2px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 16px;
+    font-family: var(--font);
+}
+
+.header-left{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.header h5{
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.header i{
+    font-size: 20px;
+}
+
+.main{
+    display: grid;
+    grid-template-rows: 100px 1fr 1fr;
+
+}
+
+.main-head{
+    display: flex;
+    flex-direction: column;
+}
+
+.main-head p{
+    margin: 0;
+    padding: 0.5rem 1rem;
+    color: var(--primary);
+    font-size: 0.7rem;
+    font-family: var(--font);
+}
+
+.main-head h1{
+    margin: 0;
+    color: var(--primary);
+    font-size: 1.3rem;
+    padding: 0.5rem 1rem;
+    font-family: var(--font);
+}
+
+#main-head-gris{
+    color: var(--secondary);  
+}
