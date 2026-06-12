@@ -1,0 +1,173 @@
+:root {
+  --background: #f8f8f8;
+  --card: #ffffff;
+  --primary: #111827;
+  --secondary: #6b7280;
+  --border: #e5e7eb;
+  --success: #22c55e;
+  --danger: #ef4444;
+  --font: "Inter", sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font);
+    background-color: var(--background);
+    color: var(--primary);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.navbar {
+    background-color: var(--card);
+    padding: 15px 20px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    font-size: 14px;
+    border-bottom: 1px solid var(--border);
+}
+
+.navbar .brand {
+    font-weight: bold;
+}
+
+.navbar .nav-link {
+    color: var(--secondary);
+    text-decoration: none;
+}
+
+
+.main-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+
+.login-card {
+    display: flex;
+    width: 100%;
+    max-width: 900px;
+    min-height: 500px;
+    background-color: var(--card);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+.card-info {
+    flex: 1;
+    background-color: var(--primary);
+    color: var(--card); /* Usamos el color blanco de la tarjeta para el texto sobre fondo oscuro */
+    padding: 45px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card-info .tag {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--secondary);
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+.card-info h1 {
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 25px;
+}
+
+.card-info p {
+    font-size: 13px;
+    color: var(--secondary);
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.card-form {
+    flex: 1;
+    padding: 45px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card-form h2 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 12px;
+    margin-bottom: 8px;
+    color: var(--primary);
+    font-weight: 500;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 14px;
+    background-color: transparent;
+    color: var(--primary);
+    outline: none;
+}
+
+.form-group input::placeholder {
+    color: var(--secondary);
+}
+
+.demo-note {
+    font-size: 12px;
+    color: var(--secondary);
+    margin-top: -5px;
+    margin-bottom: 25px;
+}
+
+.btn-submit {
+    width: 100%;
+    background-color: var(--primary);
+    color: var(--card);
+    border: none;
+    padding: 14px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn-submit:hover {
+    background-color: rgba(17, 24, 39, 0.9); 
+}
+
+@media (max-width: 768px) {
+    .login-card {
+        flex-direction: column;
+    }
+    .card-info, .card-form {
+        padding: 30px;
+    }
+}
