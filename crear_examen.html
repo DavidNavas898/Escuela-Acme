@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion de examenes</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-left">
+            <i class="ti ti-menu-2"></i>
+            <h5>AcmeSchool</h5>
+        </div>
+        <i class="ti ti-user-circle"></i>
+    </header>
+    <main class="main">
+        <section class="main-head">
+            <p id="main-head-gris">Banco de pruebas</p>
+            <h1>Gestion de examenes</h1>
+            <p id="main-head-subtitle">Configurar examenes, preguntas y respuestas. Cada pregunta admite una unica respuesta correcta.</p>
+        </section>
+        <section class="main-container-top">
+            <div class="main-container-top-form">
+                <h5>Crear Examen</h5>
+                <form action="">
+                    <label for="code">Codigo</label>
+                    <input type="text" id="codigo" placeholder="Ej. JS-101" required>
+                    <span class="error" id="error-cedula"></span>
+                    <label for="title">Titulo</label>
+                    <input type="text" id="titulo" placeholder="Ej. Fundamentos JS" required>
+                    <span class="error" id="error-name"></span>
+                    <div class="main-container-top-form-grid-inputs">
+                        <div class="main-container-top-form-grid-inputs-cards">
+                            <label for="time">Tiempo (Minutos)</label>
+                            <input type="number" id="tiempo" placeholder="10" required>
+                            <span class="error" id="error-email"></span>
+                        </div>
+                        <div class="main-container-top-form-grid-inputs-cards">
+                            <label for="telefono">Porcentaje de aprobacion</label>
+                            <input type="tel" id="telefono" placeholder="100" required>
+                            <span class="error" id="error-telefono"></span>
+                        </div>
+                    </div>
+                     <div class="main-container-top-form-grid-inputs-text-area">
+                            <label for="desc">Descripcion del examen</label>
+                            <textarea name="desc" id="descripcion" placeholder="Descripcion del examen..." rows="4" cols="30"></textarea>
+                    </div>
+                    <section class="main-container-questions">
+                        <h6>Preguntas</h6>
+                        <div class="main-container-questions-card">
+                            <div class="main-container-questions-card-title">
+                                <h6>Pregunta 1</h6> <button>Eliminar</button>
+                            </div>
+                            <div class="main-container-questions-card-text">
+                                <input type="text" placeholder="Texto de la pregunta...">
+                            </div>
+                            <div class="main-container-questions-card-container-questions">
+                                <section>
+                                    <div class="main-container-questions-card-options">
+                                        <input type="checkbox" name="check" id="check-question">
+                                        <input type="text" id="check-text">
+                                        <button>Quitar</button>
+                                    </div>
+
+                                    <div class="main-container-questions-card-options">
+                                        <input type="checkbox" name="check" id="check-question">
+                                        <input type="text" id="check-text">
+                                        <button>Quitar</button>
+                                    </div>     
+                                    
+                                     <div class="main-container-questions-card-options">
+                                        <input type="checkbox" name="check" id="check-question">
+                                        <input type="text" id="check-text">
+                                        <button>Quitar</button>
+                                    </div> 
+                                    <div class="main-container-questions-card-container-questions-button">
+                                        <button>Agregar respuesta</button>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                    </section>
+                </form>
+            </div>
+        </section>
+
+    </main>
+    <script src="app.js"></script>
+</body>
+</html>

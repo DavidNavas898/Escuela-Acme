@@ -1,0 +1,373 @@
+:root {
+  --background: #f8f8f8;
+  --card: #ffffff;
+  --primary: #111827;
+  --secondary: #6b7280;
+  --border: #e5e7eb;
+  --success: #22c55e;
+  --danger: #ef4444;
+
+  --font: "Inter", sans-serif;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-areas: 
+    "header"
+    "main"
+    ;
+    grid-template-rows: 50px 1fr;
+    min-width: 390px;
+    min-height: 100vh;
+}
+
+.header{
+    grid-area: header;
+    background-color: var(--background);
+    border-bottom: 2px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 16px;
+    font-family: var(--font);
+}
+
+.header-left{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.header h5{
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.header i{
+    font-size: 20px;
+}
+
+.main{
+    display: grid;
+    grid-template-rows: 90px 1fr;
+    gap: 1rem;
+}
+
+.main-head{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: 0 auto;
+    align-items: start;
+    padding: 0.5rem 0;
+    justify-content: center;
+}
+
+.main-head p{
+    margin: 0;
+    color: var(--primary);
+    font-size: 0.7rem;
+    font-family: var(--font);
+    padding: 0.5rem 0;
+}
+
+.main-head h1{
+    margin: 0;
+    color: var(--primary);
+    font-size: 1.3rem;
+    font-family: var(--font);
+}
+
+#main-head-subtitle{
+    font-size: 0.610rem;
+    font-weight: bold;
+}
+
+#main-head-gris{
+    color: var(--secondary);  
+}
+
+.main-container-top{
+    display: flex;
+    justify-content: center;
+}
+
+.main-container-top-form{
+    width: 92%;
+    border: 0.5px solid gray;
+    border-radius: 0.5rem;
+}
+
+.main-container-top-form h5{
+    margin: 0;
+    padding: 1rem 1rem 0.25rem 1rem;
+    font-family: var(--font);
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: var(--font);
+    height: 100%;
+}
+
+form label{
+    font-size: 0.6rem;
+    padding: 0.3rem;
+    width: 93%;
+    font-weight: bold;
+}
+
+form input{
+    font-size: 0.8rem;
+    width: 92%;
+    padding: 0.3rem;
+    border: 1px solid #d1d5db;
+}
+
+.main-container-top-form-grid-inputs{
+    width: 92%;
+    margin-top: 0.5rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    font-weight: bold;
+}
+
+.main-container-top-form-grid-inputs-cards{
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    
+}
+
+.main-container-top-form-grid-inputs-cards input{
+    width: 100%;
+    border: 1px solid #d1d5db;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+input::placeholder{
+    color: var(--secondary);
+    font-size: 10px;
+    font-family: var(--font);
+}
+
+
+.azul{
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid black;
+    background-color: rgb(5, 4, 48);
+    color: white;
+    font-family: var(--font);
+}
+
+select{
+    width: 100%;
+    padding: 0.25rem;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-family: var(--font);
+    background-color: white;
+    color: #6b7280;
+}
+
+.main-container-bottom{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.main-container-bottom-right button:hover{
+    transform: scale(1.050);
+    transition: all 0.3s ease-in;
+    cursor: pointer;
+}
+
+.main-container-bottom-left button:hover{
+    transform: scale(1.050);
+    transition: all 0.3s ease-in;
+    cursor: pointer;
+}
+
+#resultado{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.tarjeta-usuario {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #e5e7eb;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    background-color: rgb(235, 230, 230);
+    width: 90%;
+    border-left: 4px groove black;
+}
+
+.tarjeta-usuario:hover {
+    transform: scale(1.025);
+    transition: all 0.3s ease-in;
+}
+
+
+.tarjeta-usuario h6 {
+    margin: 0;
+    padding: .5rem;
+    font-size: 0.82rem;
+    font-family: var(--font);
+    font-weight: 400;
+}
+
+.botones{
+    display: flex;
+    width: 50%;
+    gap: 1rem;
+    margin-left: .5rem;
+}
+
+.botones button{
+    width: 100%;
+    padding: 0.4rem 1rem;
+    display: flex;
+    align-items: center;
+    border-radius: 1rem;
+    border: none;
+    cursor: pointer;
+    margin-top: .5rem;
+}
+
+.botones button:hover{
+    transform: scale(1.020);
+    transition: all 0.3s ease-in;
+    
+}
+
+.delete{
+    background-color: red;
+    color: white;
+    font-weight: bold;
+}
+
+.edit{
+    background-color: black;
+    color: white;
+    font-weight: bold;
+}
+
+.error {
+    font-size: 0.6rem;
+    color: var(--danger);
+    font-family: var(--font);
+    padding: 0.1rem 0.3rem;
+    text-align: end;
+    width: 92%;
+}
+
+.inputError {
+    border: 1px solid var(--danger) !important;
+}
+
+
+.esconder{
+    display: none;
+}
+
+.main-container-top-form-grid-inputs-text-area{
+    width: 92%;
+    display: flex;
+    flex-direction: column;
+}
+
+textarea {
+  resize: none;
+}
+
+.main-container-questions{
+    width: 92%;
+}
+
+.main-container-questions h6{
+    margin: 0;
+    padding: 0.9rem 0;
+}
+
+.main-container-questions-card{
+    display: grid;
+    grid-template-rows: 50px 30px 1fr;
+    border: 1px solid gray;
+    margin-bottom: .5rem;
+    border-radius: .5rem;
+}
+
+.main-container-questions-card-title{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+}
+
+.main-container-questions-card-title button{
+    height: 80%;
+}
+
+.main-container-questions-card-text input{
+    width: 95%;
+}
+
+.main-container-questions-card-text{
+    display: flex;
+    justify-content: center;
+    height: 100%;
+}
+
+.main-container-questions-card-options{
+    display: flex;
+    width: 100%;
+    gap: 1rem;
+    margin-top: 1rem;
+    align-items: center;
+    padding: 0 .5rem;
+    margin-bottom: .5rem;
+}
+
+#check-question{
+    width: 10%;
+}
+
+#check-text{
+    width: 80%;
+    border: 1px solid gray;
+    border-radius: .5rem;
+}
+
+.main-container-questions-card-container-questions-button{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.main-container-questions-card-container-questions-button button{
+    width: 95%;
+    margin-bottom: .5rem;
+    padding: .5rem;
+    border-radius: 1rem;
+    border: none;
+}
