@@ -65,4 +65,40 @@ function comenzarExamen(){
         return;
 
     }
+
+    const examen = obtenerExamen().find(e => e.id === idExamenPendiente);
+    if (!examen) return;
+
+    idEstudiante   = identificacion;
+    nombreEstudiante = nombre;
+    examenActual   = examen;
+    respuestasElegidas ={};
+
+
+    cerrarModal()
+    renderizarExamenActivo()
+    
+}
+
+function renderizarExamenActivo() {
+  document.getElementById('titulo-examen-activo').textContent = examenActual.titulo;
+  document.getElementById('meta-examen-activo').textContent   =
+    `${examenActual.preguntas.length} preguntas · Aprobación: ${examenActual.aprobacion}%`;
+
+  const cuerpo = document.getElementById('cuerpo-examen');
+  cuerpo.innerHTML = examenActual.preguntas.map((pregunta, indice) => `
+    <div class="elemento-pregunta">
+      <div class="numero-pregunta">Pregunta ${indice + 1} de ${examenActual.preguntas.length}</div>
+      <div class="texto-pregunta">${escaparHtml(pregunta.texto)}</div>
+      ${pregunta.respuestas.map(resp => `
+        <div class="opcion-respuesta" id="opcion_${resp.id}"
+             onclick="elegirRespuesta('${pregunta.id}','${resp.id}')">
+          <input type="radio" name="preg_${pregunta.id}" value="${resp.id}">
+          <div class="circulo-opcion"></div>
+          <span>${escaparHtml(resp.texto)}</span>
+        </div>
+      `).join('')}
+    </div>
+  `).join('') + `<button class="btn-terminar" onclick="terminarExamen()">Terminar examen</button>`;
+
 }
