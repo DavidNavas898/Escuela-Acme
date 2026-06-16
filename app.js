@@ -1,18 +1,10 @@
-let usuarioDB = []
+let usuarioDB = JSON.parse(localStorage.getItem("usuarios")) || [];
 const botonFormulario = document.getElementById("main-container-bottom-form")
 
 
 
 
 function crearUsuario(){
-
-    const id = document.getElementById("cedula").value;
-    const name = document.getElementById("name").value;
-    const email = document.getElementById("email").value;
-    const telefono = document.getElementById("telefono").value;
-    const cargo = document.getElementById("cargo").value;
-    const password = document.getElementById("password").value;
-    const limpiar = document.getElementById("limpiar");
 
     if(!validarFormulario()){
         return;
@@ -23,65 +15,19 @@ function crearUsuario(){
     }
 
     const usuario = {
-        id,
-        name,
-        email,
-        telefono,
-        cargo,
-        password
+        id: document.getElementById("cedula").value,
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        telefono: document.getElementById("telefono").value,
+        cargo: document.getElementById("cargo").value,
+        password: document.getElementById("password").value
     };
 
     usuarioDB.push(usuario);
+    guardarUsuarios();
+    mostrarTarjeta(usuario)
  
-    
-    const resultado = document.getElementById("resultado");
-    const tarjeta = document.createElement("div");
-    const divBotones = document.createElement("div")
-
-    const identificacion = document.createElement("h6");
-    identificacion.textContent = `Cédula: ${id}`;
-
-    const nombre = document.createElement("h6");
-    nombre.textContent = `Nombre: ${name}`;
-
-    const correo = document.createElement("h6");
-    correo.textContent = `Correo: ${email}`;
-
-    const tel = document.createElement("h6");
-    tel.textContent = `Teléfono: ${telefono}`;
-
-    const cargoTitulo = document.createElement("h6");
-    cargoTitulo.textContent = `Cargo: ${cargo}`;
-
-    const editar = document.createElement("button")
-    editar.textContent = "Editar"
-    editar.classList.add("edit")
-    editar.addEventListener("click",() =>{
-        editarUsuario(tarjeta,usuario);
-    })
-    
-    const eliminar = document.createElement("button")
-    eliminar.textContent = "Eliminar"
-    eliminar.classList.add("delete")
-    eliminar.addEventListener("click", ()=>{
-        eliminarUsuario(tarjeta,id)
-    })
-
-   
- 
-    
-    divBotones.append(editar,eliminar)
-    divBotones.classList.add("botones")
-    tarjeta.append(identificacion,nombre,correo,tel,cargoTitulo,divBotones);
-
-
-    
-    tarjeta.classList.add("tarjeta-usuario")
-
-    resultado.append(tarjeta);
-
-    const usuarios = document.querySelectorAll(".tarjeta-usuario");
-    document.querySelector(".users-top p").textContent = `${usuarios.length} registros`;
+    document.querySelector(".users-top p").textContent = `${usuarioDB.length} registros`;
 
 }
 
@@ -134,6 +80,7 @@ function eliminarUsuario(tarjeta,id){
     tarjeta.remove()
 
     usuarioDB = usuarioDB.filter(usuario => usuario.id != id);
+    guardarUsuarios();
 
     document.querySelector(".users-top p").textContent = `${usuarioDB.length} registros`;
 }
@@ -144,28 +91,48 @@ function editarUsuario(tarjeta,usuario){
     document.getElementById("email").value = usuario.email;
     document.getElementById("telefono").value = usuario.telefono;
     document.getElementById("password").value = usuario.password;
+    document.getElementById("cargo").value = usuario.cargo;
 
-    botonActualizar = document.createElement("div");
+    const botonActualizar = document.createElement("button");
     botonActualizar.classList.add("azul");
     botonActualizar.textContent = "Actualizar";
 
 
-    botonCrear = document.getElementById("crear");
+    const botonCrear = document.getElementById("crear");
     botonCrear.classList.add("esconder");
 
-    botonLimpiar = document.getElementById("limpiar");
+    const botonLimpiar = document.getElementById("limpiar");
     botonLimpiar.setAttribute("onclick", "locationReload()");
     botonLimpiar.textContent = "Cancelar Edicion"
 
     botonFormulario.append(botonActualizar);
 
-    
+    botonActualizar.addEventListener("click", ()=>{
+         if(!validarFormulario()){
+        return;
+        }
 
-    
-    
+        let nuevoNombre = document.getElementById("name").value;
+        let nuevoEmail = document.getElementById("email").value;
+        let nuevoTelefono = document.getElementById("telefono").value;
+        let nuevoCargo = document.getElementById("cargo").value;
+
+        usuario.name = nuevoNombre;
+        usuario.email = nuevoEmail;
+        usuario.telefono = nuevoTelefono;
+        usuario.cargo = nuevoCargo;
+
+        guardarUsuarios();
+
+        let campos = tarjeta.querySelectorAll("h6");
+        campos[1].textContent = "Nombre: "+ nuevoNombre;
+        campos[2].textContent = "Email: "+ nuevoEmail;
+        campos[3].textContent = "Telefono: "+ nuevoTelefono;
+
+    });
 }
 
-function limpiarFormulario(usuario){
+function limpiarFormulario(){
     document.getElementById("cedula").value = "";
     document.getElementById("name").value = ""; 
     document.getElementById("email").value = "";
@@ -176,3 +143,62 @@ function limpiarFormulario(usuario){
 function locationReload(){
     location.reload();
 }
+
+function mostrarTarjeta(usuario){
+    const resultado = document.getElementById("resultado");
+    const tarjeta = document.createElement("div");
+    const divBotones = document.createElement("div")
+
+    const identificacion = document.createElement("h6");
+    identificacion.textContent = `Cédula: ${usuario.id}`;
+
+    const nombre = document.createElement("h6");
+    nombre.textContent = `Nombre: ${usuario.name}`;
+
+    const correo = document.createElement("h6");
+    correo.textContent = `Correo: ${usuario.email}`;
+
+    const tel = document.createElement("h6");
+    tel.textContent = `Teléfono: ${usuario.telefono}`;
+
+    const cargoTitulo = document.createElement("h6");
+    cargoTitulo.textContent = `Cargo: ${usuario.cargo}`;
+
+    const editar = document.createElement("button")
+    editar.textContent = "Editar"
+    editar.classList.add("edit")
+    editar.addEventListener("click",() =>{
+        editarUsuario(tarjeta,usuario);
+    })
+    
+    const eliminar = document.createElement("button")
+    eliminar.textContent = "Eliminar"
+    eliminar.classList.add("delete")
+    eliminar.addEventListener("click", ()=>{
+        eliminarUsuario(tarjeta,usuario.id)
+    })
+
+   
+ 
+    
+    divBotones.append(editar,eliminar)
+    divBotones.classList.add("botones")
+    tarjeta.append(identificacion,nombre,correo,tel,cargoTitulo,divBotones);
+
+
+    
+    tarjeta.classList.add("tarjeta-usuario")
+
+    resultado.append(tarjeta);
+}
+
+function guardarUsuarios() {
+    localStorage.setItem("usuarios", JSON.stringify(usuarioDB));
+}
+
+usuarioDB.forEach(usuario => {
+    mostrarTarjeta(usuario);
+});
+
+document.querySelector(".users-top p").textContent =
+`${usuarioDB.length} registros`;
