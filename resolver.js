@@ -100,7 +100,8 @@ function renderizarExamenActivo() {
       `).join('')}
     </div>
   `).join('') + `<button class="btn-terminar" onclick="terminarExamen()">Terminar examen</button>`;
-
+   iniciarCronometro(examenActual.tiempo * 60);
+   irA('resolviendo');
 }
 
 function elegirRespuesta(idPregunta, idRespuesta) {
@@ -116,6 +117,7 @@ function elegirRespuesta(idPregunta, idRespuesta) {
 function iniciarCronometro () {
 detenerCronometro();
 tiempoRestante = segundos;
+actualizarReloj();
 
 cronometro = setinterval(() => {
     tiempoRestante --;
@@ -136,4 +138,36 @@ function actualizarReloj () {
     const minutos  = Math.floor (tiempoRestante / 60).toString().padStart(2, '0');
     const segundos = (tiempoRestante % 60).toString().padStart(2, '0')
     document.getElementById('reloj-examen').textContent =` ${minutos}:${segundos}`;
+}
+
+function terminarExamen (){
+    detenerCronometro();
+    if (!examenActual) return;
+
+    let aciertos = 0;
+     examenActual.preguntas.forEach(pregunta => {
+        const elegida = respuestasElegidas[pregunta.id];
+        const correcta = pregunta.respuestas.find( r => r.correcta);
+        if (elegida && correcta  && elegida === correcta.id) aciertos++;
+     });
+
+     const total = examenActual.preguntas.length;
+     const porcentaje = total ? Math.round((aciertos / total) * 100): 0;
+     const aprobado = porcentaje >= examenActual.aprobacion;
+
+     /*pantalla de resultado */
+
+     const elementoPuntacion = document.getElementById('puntuaion-resultado') ;
+     elementoPuntacion.textContent = porcentaje + '%';
+     elementoPuntacion.className = 'puntuacion-resultado ' + (aprobado ? 'aprobado' : 'reprobado');
+
+     const elementoEstado = document.getElementById('estado-resultado');
+     elementoEstado.textContent = aprobado ? '¡Examen aprobado!' : 'Examen no aprobado';
+     elementoEstado.className   = 'estado-resultado ' + (aprobado ? 'aprobado' : 'reprobado');
+
+     document.getElementById('info-resultado').textContent = 
+     `${nombreEstudiante} · Identificación: ${idEstudiante}\n` +
+    `${aciertos} de ${total} respuestas correctas. Se requiere ${examenActual.aprobacion}% para aprobar.`;
+
+    irA('resultado');
 }
