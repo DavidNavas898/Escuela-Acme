@@ -15,11 +15,14 @@ if (miFormulario) {
 
         const listaUsuarios = JSON.parse(localStorage.getItem('usuarios'));
         let accesoConcedido = false;
+        let rolUsuario = "";
 
         for (let i = 0; i < listaUsuarios.length; i++) {
             const usuarioActual = listaUsuarios[i];
             if (usuarioActual.email === correoIngresado && usuarioActual.password === claveIngresada) {
                 accesoConcedido = true;
+                rolUsuario = usuarioActual.cargo;
+                console.log(rolUsuario)
                 break; 
             }
         }
@@ -32,8 +35,10 @@ if (miFormulario) {
                 confirmButtonText: 'Continuar',
                 confirmButtonColor: '#3085d6'
             }).then((result) => {
-                if (result.isConfirmed) {
-                    window.location.href = 'inicio.html';
+                if (result.isConfirmed && rolUsuario === 'Administrador') {
+                    window.location.href = 'portaladmin.html';
+                }else{
+                     window.location.href = 'inicio.html';
                 }
             });
         } else {
