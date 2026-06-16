@@ -1,5 +1,3 @@
-console.log("si entra al js ")
-
 const miFormulario = document.getElementById('miFormulario');
 
 if (miFormulario) {
@@ -17,7 +15,7 @@ if (miFormulario) {
         let accesoConcedido = false;
         let rolUsuario = "";
 
-        for (let i = 0; i < listaUsuarios.length; i++) {
+        for (let i = 0; i < listaUsuarios.lenght; i++) {
             const usuarioActual = listaUsuarios[i];
             if (usuarioActual.email === correoIngresado && usuarioActual.password === claveIngresada) {
                 accesoConcedido = true;
