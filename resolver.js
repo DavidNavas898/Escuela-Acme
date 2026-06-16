@@ -112,3 +112,28 @@ function elegirRespuesta(idPregunta, idRespuesta) {
   document.getElementById('opcion_' + idRespuesta)?.classList.add('seleccionada');
   respuestasElegidas[idPregunta] = idRespuesta;
 }
+
+function iniciarCronometro () {
+detenerCronometro();
+tiempoRestante = segundos;
+
+cronometro = setinterval(() => {
+    tiempoRestante --;
+    if (tiempoRestante <= 60 ) document.getElementById ('reloj.examen').classList.add('advertencia');
+    if (tiempoRestante <= 0) terminarExamen();
+
+    },1000);
+
+
+
+}
+
+function detenerCronometro() {
+  if (cronometro) { clearInterval(cronometro); cronometro = null; }
+}
+
+function actualizarReloj () {
+    const minutos  = Math.floor (tiempoRestante / 60).toString().padStart(2, '0');
+    const segundos = (tiempoRestante % 60).toString().padStart(2, '0')
+    document.getElementById('reloj-examen').textContent =` ${minutos}:${segundos}`;
+}
