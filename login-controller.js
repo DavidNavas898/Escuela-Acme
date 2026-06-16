@@ -13,7 +13,7 @@ if (miFormulario) {
         const correoIngresado = document.getElementById('email').value;
         const claveIngresada = document.getElementById('password').value;
 
-        const listaUsuarios = JSON.parse(localStorage.getItem('usuarios'));
+        const listaUsuarios = JSON.parse(localStorage.getItem('usuario'));
         let accesoConcedido = false;
         let rolUsuario = "";
 
