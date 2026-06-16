@@ -33,7 +33,7 @@ if (miFormulario) {
                 confirmButtonText: 'Continuar',
                 confirmButtonColor: '#3085d6'
             }).then((result) => {
-                if (result.isConfirmed && rolUsuario === 'Administrador') {
+                if (result.isConfirmed && rolUsuario === 'administrativo') {
                     window.location.href = 'portaladmin.html';
                 }else{
                      window.location.href = 'inicio.html';
