@@ -102,3 +102,13 @@ function renderizarExamenActivo() {
   `).join('') + `<button class="btn-terminar" onclick="terminarExamen()">Terminar examen</button>`;
 
 }
+
+function elegirRespuesta(idPregunta, idRespuesta) {
+  const pregunta = examenActual.preguntas.find(p => p.id === idPregunta);
+  /* lo siguiente es para deseleccionar preguntas del eaxmen*/
+  pregunta.respuestas.forEach(r => {
+    document.getElementById('opcion_' + r.id)?.classList.remove('seleccionada');
+  });
+  document.getElementById('opcion_' + idRespuesta)?.classList.add('seleccionada');
+  respuestasElegidas[idPregunta] = idRespuesta;
+}
