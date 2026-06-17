@@ -27,7 +27,7 @@ if (miFormulario) {
         let accesoConcedido = false;
         let rolUsuario = "";
 
-        for (let i = 0; i < listaUsuarios.lenght; i++) {
+        for (let i = 0; i < listaUsuarios.length; i++) {
             const usuarioActual = listaUsuarios[i];
             if (usuarioActual.email === correoIngresado && usuarioActual.password === claveIngresada) {
                 accesoConcedido = true;
@@ -52,7 +52,7 @@ if (accesoConcedido) {
             };
             sessionStorage.setItem('sesionActiva', JSON.stringify(sesionUsuario));
             if (rolUsuario === 'administrativo') {
-                window.location.href = 'portaladmin.html';
+                window.location.href = 'crear_examen.html';
             } else {
                 window.location.href = 'inicio.html';
             }
