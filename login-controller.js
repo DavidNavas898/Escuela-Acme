@@ -36,22 +36,29 @@ if (miFormulario) {
                 break; 
             }
         }
-        if (accesoConcedido) {
-            console.log("entro al if concedido")
-            Swal.fire({
-                title: '¡Bienvenido!',
-                text: 'Inicio de sesión correcto.',
-                icon: 'success',
-                confirmButtonText: 'Continuar',
-                confirmButtonColor: '#3085d6'
-            }).then((result) => {
-                if (result.isConfirmed && rolUsuario === 'administrativo') {
-                    window.location.href = 'portaladmin.html';
-                }else{
-                     window.location.href = 'inicio.html';
-                }
-            });
-        } else {
+if (accesoConcedido) {
+    Swal.fire({
+        title: '¡Bienvenido!',
+        text: 'Inicio de sesión correcto.',
+        icon: 'success',
+        confirmButtonText: 'Continuar',
+        confirmButtonColor: '#3085d6'
+    }).then((result) => {
+        if (result.isConfirmed) {
+
+            const sesionUsuario = {
+                logueado: true,
+                cargo: rolUsuario
+            };
+            sessionStorage.setItem('sesionActiva', JSON.stringify(sesionUsuario));
+            if (rolUsuario === 'administrativo') {
+                window.location.href = 'portaladmin.html';
+            } else {
+                window.location.href = 'inicio.html';
+            }
+        }
+    });
+} else {
             Swal.fire({
                 title: 'Error de credenciales',
                 text: 'El correo o la contraseña no son correctos.',
