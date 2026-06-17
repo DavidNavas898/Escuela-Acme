@@ -11,7 +11,19 @@ if (miFormulario) {
         const correoIngresado = document.getElementById('email').value;
         const claveIngresada = document.getElementById('password').value;
 
-        const listaUsuarios = JSON.parse(localStorage.getItem('usuario'));
+        let listaUsuarios = JSON.parse(localStorage.getItem('usuario'))|| [];
+        const userAdmin = {
+        id: "1234567890",
+        name: "admin",
+        email: "admin@acme.edu",
+        telefono: "",
+        cargo: "administrativo",
+        password: "Admin123"
+    }
+
+    listaUsuarios.push(userAdmin);
+   
+
         let accesoConcedido = false;
         let rolUsuario = "";
 
