@@ -11,11 +11,23 @@ if (miFormulario) {
         const correoIngresado = document.getElementById('email').value;
         const claveIngresada = document.getElementById('password').value;
 
-        const listaUsuarios = JSON.parse(localStorage.getItem('usuario'));
+        let listaUsuarios = JSON.parse(localStorage.getItem('usuario'))|| [];
+        const userAdmin = {
+        id: "1234567890",
+        name: "admin",
+        email: "admin@acme.edu",
+        telefono: "",
+        cargo: "administrativo",
+        password: "Admin123"
+    }
+
+    listaUsuarios.push(userAdmin);
+   
+
         let accesoConcedido = false;
         let rolUsuario = "";
 
-        for (let i = 0; i < listaUsuarios.length; i++) {
+        for (let i = 0; i < listaUsuarios.lenght; i++) {
             const usuarioActual = listaUsuarios[i];
             if (usuarioActual.email === correoIngresado && usuarioActual.password === claveIngresada) {
                 accesoConcedido = true;
@@ -24,22 +36,29 @@ if (miFormulario) {
                 break; 
             }
         }
-        if (accesoConcedido) {
-            console.log("entro al if concedido")
-            Swal.fire({
-                title: '¡Bienvenido!',
-                text: 'Inicio de sesión correcto.',
-                icon: 'success',
-                confirmButtonText: 'Continuar',
-                confirmButtonColor: '#3085d6'
-            }).then((result) => {
-                if (result.isConfirmed && rolUsuario === 'administrativo') {
-                    window.location.href = 'portaladmin.html';
-                }else{
-                     window.location.href = 'inicio.html';
-                }
-            });
-        } else {
+if (accesoConcedido) {
+    Swal.fire({
+        title: '¡Bienvenido!',
+        text: 'Inicio de sesión correcto.',
+        icon: 'success',
+        confirmButtonText: 'Continuar',
+        confirmButtonColor: '#3085d6'
+    }).then((result) => {
+        if (result.isConfirmed) {
+
+            const sesionUsuario = {
+                logueado: true,
+                cargo: rolUsuario
+            };
+            sessionStorage.setItem('sesionActiva', JSON.stringify(sesionUsuario));
+            if (rolUsuario === 'administrativo') {
+                window.location.href = 'portaladmin.html';
+            } else {
+                window.location.href = 'inicio.html';
+            }
+        }
+    });
+} else {
             Swal.fire({
                 title: 'Error de credenciales',
                 text: 'El correo o la contraseña no son correctos.',
