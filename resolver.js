@@ -119,7 +119,7 @@ detenerCronometro();
 tiempoRestante = segundos;
 actualizarReloj();
 
-cronometro = setinterval(() => {
+cronometro = setInterval(() => {
     tiempoRestante --;
     if (tiempoRestante <= 60 ) document.getElementById ('reloj.examen').classList.add('advertencia');
     if (tiempoRestante <= 0) terminarExamen();
