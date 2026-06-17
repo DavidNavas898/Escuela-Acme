@@ -189,7 +189,7 @@ function agregarPreguntas() {
     tarjeta.innerHTML = `
         <div class="main-container-questions-card-title">
             <h6>Pregunta ${contadorPreguntas}</h6>
-            <button type="button">Eliminar</button>
+            <button type="button" class="delete">Eliminar</button>
         </div>
 
         <div class="main-container-questions-card-text">
@@ -340,6 +340,8 @@ function editarExamen(examen){
     document.getElementById("porcentaje").value = examen.porcentaje;
     document.getElementById("descripcion").value = examen.descripcion;
 
+
+
     const contenedor = document.getElementById("contenedor-preguntas");
     contenedor.innerHTML = "";
 
@@ -351,7 +353,7 @@ function editarExamen(examen){
         tarjeta.innerHTML = `
             <div class="main-container-questions-card-title">
                 <h6>Pregunta ${index + 1}</h6>
-                <button type="button">Eliminar</button>
+                <button type="button" class="delete">Eliminar</button>
             </div>
 
             <div class="main-container-questions-card-text">
@@ -382,7 +384,7 @@ function editarExamen(examen){
                        class="check-text"
                        value="${respuesta.texto}">
 
-                <button type="button">Quitar</button>
+                <button type="button" class="gray">Quitar</button>
             `;
 
             section.append(opcion);
