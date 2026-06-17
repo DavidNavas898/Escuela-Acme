@@ -1,0 +1,73 @@
+.header-nav {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.header-nav a {
+    font-family: var(--font);
+    font-size: 0.8rem;
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.header-nav a:hover {
+    text-decoration: underline;
+}
+
+.btn-logout {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 0.5rem;
+    padding: 0.4rem 0.8rem;
+    font-family: var(--font);
+    font-size: 0.8rem;
+    color: var(--primary);
+    cursor: pointer;
+}
+
+.btn-logout:hover {
+    background-color: var(--border);
+}
+
+.dashboard-cards {
+    width: 90%;
+    margin: 0 auto 2rem auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+}
+
+.dashboard-card {
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 0.5rem;
+    padding: 1.25rem;
+    text-decoration: none;
+    color: var(--primary);
+    font-family: var(--font);
+    transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.dashboard-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
+}
+
+.dashboard-card i {
+    font-size: 1.6rem;
+}
+
+.dashboard-card h3 {
+    margin: 0.5rem 0 0.25rem 0;
+    font-size: 1rem;
+}
+
+.dashboard-card p {
+    margin: 0;
+    font-size: 0.8rem;
+    color: var(--secondary);
+}

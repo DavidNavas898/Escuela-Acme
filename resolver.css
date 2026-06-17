@@ -1,0 +1,416 @@
+:root {
+    --background: #f8f8f8;
+    --card: #ffffff;
+    --primary: #111827;
+    --secondary: #6b7280;
+    --border: #e5e7eb;
+    --success: #22c55e;
+    --danger: #ef4444;
+    --font: "Inter", sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font);
+    background-color: var(--background);
+    color: var(--primary);
+    min-height: 100vh;
+}
+
+/* ── Navbar ── */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1.5rem;
+    background-color: var(--card);
+    border-bottom: 1px solid var(--border);
+}
+
+.brand {
+    font-weight: 700;
+}
+
+.nav-link {
+    color: var(--primary);
+    text-decoration: none;
+    font-size: 0.85rem;
+}
+
+.nav-link:hover {
+    text-decoration: underline;
+}
+
+/* ── Vistas (mostrar/ocultar) ── */
+.vista-oculta {
+    display: none !important;
+}
+
+.vista-centrada {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 56px);
+}
+
+/* ── Listado de exámenes ── */
+.contenedor {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+}
+
+.encabezado-seccion {
+    margin-bottom: 1.5rem;
+}
+
+.titulo-seccion {
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.descripcion-seccion {
+    color: var(--secondary);
+    font-size: 0.9rem;
+    margin-top: 0.25rem;
+}
+
+.cuadricula-examenes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1rem;
+}
+
+.estado-vacio {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: var(--secondary);
+    padding: 2rem;
+}
+
+.tarjeta-examen {
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 0.75rem;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.codigo-examen {
+    font-size: 0.7rem;
+    color: var(--secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.nombre-examen {
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.descripcion-examen {
+    font-size: 0.85rem;
+    color: var(--secondary);
+}
+
+.meta-examen {
+    display: flex;
+    gap: 1rem;
+    margin: 0.5rem 0;
+}
+
+.elemento-meta {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.7rem;
+    color: var(--secondary);
+}
+
+.elemento-meta strong {
+    font-size: 1rem;
+    color: var(--primary);
+}
+
+.btn-iniciar-examen {
+    margin-top: 0.5rem;
+    background-color: var(--primary);
+    color: #fff;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.6rem;
+    font-family: var(--font);
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+
+.btn-iniciar-examen:hover {
+    opacity: 0.9;
+}
+
+/* ── Modal de datos del estudiante ── */
+.fondo-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(17, 24, 39, 0.5);
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.fondo-modal.abierto {
+    display: flex;
+}
+
+.ventana-modal {
+    background-color: var(--card);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    max-width: 380px;
+    width: 100%;
+}
+
+.ventana-modal h3 {
+    margin: 0 0 0.5rem 0;
+}
+
+.ventana-modal p {
+    color: var(--secondary);
+    font-size: 0.85rem;
+    margin: 0 0 1rem 0;
+}
+
+.grupo-form {
+    margin-bottom: 1rem;
+}
+
+.etiqueta-form {
+    display: block;
+    font-size: 0.8rem;
+    margin-bottom: 0.3rem;
+}
+
+.campo-form {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid var(--border);
+    border-radius: 0.4rem;
+    font-family: var(--font);
+}
+
+.acciones-form {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.btn-secundario {
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 0.4rem;
+    padding: 0.5rem 1rem;
+    font-family: var(--font);
+    cursor: pointer;
+}
+
+.btn-enviar {
+    background-color: var(--primary);
+    color: #fff;
+    border: none;
+    border-radius: 0.4rem;
+    padding: 0.5rem 1rem;
+    font-family: var(--font);
+    cursor: pointer;
+}
+
+/* ── Resolviendo el examen ── */
+.barra-superior-examen {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    background-color: var(--card);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+}
+
+.titulo-examen-activo {
+    font-weight: 700;
+}
+
+.meta-examen-activo {
+    font-size: 0.8rem;
+    color: var(--secondary);
+}
+
+.reloj-examen {
+    font-size: 1.3rem;
+    font-weight: 700;
+    padding: 0.4rem 0.9rem;
+    border-radius: 0.5rem;
+    background-color: var(--background);
+}
+
+.reloj-examen.advertencia {
+    color: var(--danger);
+    background-color: #fee2e2;
+}
+
+.cuerpo-examen {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.elemento-pregunta {
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 0.75rem;
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.numero-pregunta {
+    font-size: 0.75rem;
+    color: var(--secondary);
+    margin-bottom: 0.4rem;
+}
+
+.texto-pregunta {
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+.opcion-respuesta {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.6rem;
+    border: 1px solid var(--border);
+    border-radius: 0.5rem;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+}
+
+.opcion-respuesta input[type="radio"] {
+    display: none;
+}
+
+.circulo-opcion {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 2px solid var(--border);
+    flex-shrink: 0;
+}
+
+.opcion-respuesta.seleccionada {
+    border-color: var(--primary);
+    background-color: #f3f4f6;
+}
+
+.opcion-respuesta.seleccionada .circulo-opcion {
+    border-color: var(--primary);
+    background-color: var(--primary);
+}
+
+.btn-terminar {
+    width: 100%;
+    background-color: var(--primary);
+    color: #fff;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.8rem;
+    font-family: var(--font);
+    font-size: 0.9rem;
+    cursor: pointer;
+    margin-top: 0.5rem;
+}
+
+/* ── Resultado ── */
+.tarjeta-resultado {
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 0.75rem;
+    padding: 2rem;
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+}
+
+.puntuacion-resultado {
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.puntuacion-resultado.aprobado {
+    color: var(--success);
+}
+
+.puntuacion-resultado.reprobado {
+    color: var(--danger);
+}
+
+.estado-resultado {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0.5rem 0 1rem 0;
+}
+
+.estado-resultado.aprobado {
+    color: var(--success);
+}
+
+.estado-resultado.reprobado {
+    color: var(--danger);
+}
+
+.info-resultado {
+    color: var(--secondary);
+    font-size: 0.85rem;
+    white-space: pre-line;
+}
+
+.btn-volver {
+    margin-top: 1rem;
+    background-color: var(--primary);
+    color: #fff;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.6rem 1.2rem;
+    font-family: var(--font);
+    cursor: pointer;
+}
+
+/* ── Notificación global ── */
+#notificacion {
+    position: fixed;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--primary);
+    color: #fff;
+    padding: 0.6rem 1.2rem;
+    border-radius: 0.5rem;
+    font-size: 0.85rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+}
+
+#notificacion.visible {
+    opacity: 1;
+}
+
+#notificacion.error {
+    background-color: var(--danger);
+}

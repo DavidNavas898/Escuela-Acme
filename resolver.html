@@ -1,12 +1,82 @@
-<!-- ════════════════════════════════════════
-     PÁGINA — RESOLVER (pública)
-     ════════════════════════════════════════ -->
-<div class="pagina" id="pagina-resolver">
-  <div class="contenedor">
-    <div class="encabezado-seccion">
-      <div class="titulo-seccion">Exámenes disponibles</div>
-      <div class="descripcion-seccion">Selecciona un examen para comenzar. No necesitas una cuenta.</div>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AcmeSchool - Resolver examen</title>
+    <link rel="stylesheet" href="resolver.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <span class="brand">AcmeSchool</span>
+        <a href="login.html" class="nav-link">Acceso administrativo</a>
+    </nav>
+
+    <!-- ════════════════════════════════════════
+         VISTA 1 — LISTADO DE EXÁMENES (pública)
+         ════════════════════════════════════════ -->
+    <main class="contenedor" id="vista-listado">
+        <div class="encabezado-seccion">
+            <div class="titulo-seccion">Exámenes disponibles</div>
+            <div class="descripcion-seccion">Selecciona un examen para comenzar. No necesitas una cuenta.</div>
+        </div>
+        <div class="cuadricula-examenes" id="cuadricula-examenes"></div>
+    </main>
+
+    <!-- ════════════════════════════════════════
+         VISTA 2 — RESOLVIENDO EL EXAMEN
+         ════════════════════════════════════════ -->
+    <main class="vista-oculta" id="vista-resolviendo">
+        <div class="barra-superior-examen">
+            <div>
+                <div class="titulo-examen-activo" id="titulo-examen-activo">Título del examen</div>
+                <div class="meta-examen-activo" id="meta-examen-activo">0 preguntas · Aprobación: 0%</div>
+            </div>
+            <div class="reloj-examen" id="reloj-examen">00:00</div>
+        </div>
+        <div class="cuerpo-examen" id="cuerpo-examen"></div>
+    </main>
+
+    <!-- ════════════════════════════════════════
+         VISTA 3 — RESULTADO DEL EXAMEN
+         ════════════════════════════════════════ -->
+    <main class="vista-oculta vista-centrada" id="vista-resultado">
+        <div class="tarjeta-resultado">
+            <div class="puntuacion-resultado" id="puntuacion-resultado">0%</div>
+            <div class="estado-resultado" id="estado-resultado">Resultado</div>
+            <p class="info-resultado" id="info-resultado"></p>
+            <button class="btn-volver" id="btn-volver-listado">Volver al listado</button>
+        </div>
+    </main>
+
+    <!-- ════════════════════════════════════════
+         MODAL — DATOS DEL ESTUDIANTE
+         ════════════════════════════════════════ -->
+    <div class="fondo-modal" id="modal-estudiante">
+        <div class="ventana-modal">
+            <h3 id="titulo-modal-examen">Nombre del examen</h3>
+            <p>Ingresa tus datos para comenzar. Estos quedarán asociados a tus respuestas.</p>
+
+            <div class="grupo-form">
+                <label class="etiqueta-form">Número de identificación</label>
+                <input class="campo-form" id="campo-identificacion-estudiante" placeholder="Ej: 12345678">
+            </div>
+            <div class="grupo-form">
+                <label class="etiqueta-form">Nombre completo</label>
+                <input class="campo-form" id="campo-nombre-estudiante" placeholder="Tu nombre completo">
+            </div>
+
+            <div class="acciones-form">
+                <button class="btn-secundario" id="btn-cerrar-modal">Cancelar</button>
+                <button class="btn-enviar" id="btn-comenzar-examen">Comenzar examen</button>
+            </div>
+        </div>
     </div>
-    <div class="cuadricula-examenes" id="cuadricula-examenes"></div>
-  </div>
-</div>
+
+    <!-- Notificación global -->
+    <div id="notificacion"></div>
+
+    <script src="resolver.js"></script>
+</body>
+</html>

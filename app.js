@@ -1,3 +1,10 @@
+(function verificarSesion(){
+    const sesion = JSON.parse(sessionStorage.getItem('sesionActiva')) || null;
+    if (!sesion || !sesion.logueado) {
+        window.location.href = 'login.html';
+    }
+})();
+
 let usuarioDB = JSON.parse(localStorage.getItem("usuarios")) || [];
 const botonFormulario = document.getElementById("main-container-bottom-form")
 

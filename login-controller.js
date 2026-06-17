@@ -1,4 +1,19 @@
 const miFormulario = document.getElementById('miFormulario');
+(function asegurarAdminPorDefecto(){
+    let listaUsuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+    const yaExiste = listaUsuarios.some(u => u.email === 'admin@acme.edu');
+    if (!yaExiste) {
+        listaUsuarios.push({
+            id: "1234567890",
+            name: "admin",
+            email: "admin@acme.edu",
+            telefono: "",
+            cargo: "administrativo",
+            password: "Admin123"
+        });
+        localStorage.setItem('usuarios', JSON.stringify(listaUsuarios));
+    }
+})();
 
 if (miFormulario) {
     miFormulario.addEventListener('submit', function() {
