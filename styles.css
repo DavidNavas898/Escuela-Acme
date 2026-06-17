@@ -187,7 +187,6 @@ select{
     width: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
 }
 
 
@@ -203,7 +202,7 @@ select{
     cursor: pointer;
 }
 
-#resultado{
+#examenes{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -311,9 +310,10 @@ textarea {
 .main-container-questions-card{
     display: grid;
     grid-template-rows: 50px 30px 1fr;
-    border: 1px solid gray;
     margin-bottom: .5rem;
     border-radius: .5rem;
+    margin-top: .5rem;
+    border-top: 1px solid gray;
 }
 
 .main-container-questions-card-title{
@@ -348,11 +348,11 @@ textarea {
     margin-bottom: .5rem;
 }
 
-#check-question{
+.check-question{
     width: 10%;
 }
 
-#check-text{
+.check-text{
     width: 80%;
     border: 1px solid gray;
     border-radius: .5rem;
@@ -362,6 +362,7 @@ textarea {
     width: 100%;
     display: flex;
     justify-content: center;
+    border-bottom: 1px solid gray;
 }
 
 .main-container-questions-card-container-questions-button button{
@@ -370,4 +371,56 @@ textarea {
     padding: .5rem;
     border-radius: 1rem;
     border: none;
+}
+
+.users{
+    width: 92%;
+    height: 100%;
+    border-radius: 0.25rem;
+    border: 1px solid #6b7280;
+    margin-bottom: .5rem;
+}
+
+.users-top{
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+.users-top h6,p{
+    margin: 0;
+    font-size: 1rem;
+    font-family: var(--font);
+}
+
+.users p{
+    background-color: rgb(226, 223, 223);
+    padding: 0.25rem 1rem;
+    border-radius: 1rem;
+}
+
+#main-container-bottom-form{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1rem;
+    margin-bottom: .5rem;
+    width: 100%;
+}
+
+#main-container-bottom-form button{
+    padding: .6rem 1rem;
+    border-radius: .5rem;
+}
+
+.main-container-questions-title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main-container-questions-title button{
+    height: 50%;
+    padding: .5rem;
+    border-radius: .4rem;
+    margin: .8rem 0;
 }

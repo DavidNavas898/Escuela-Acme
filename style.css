@@ -266,6 +266,7 @@ select{
     background-color: rgb(235, 230, 230);
     width: 90%;
     border-left: 4px groove black;
+    margin-bottom: 1rem;
 }
 
 .tarjeta-usuario:hover {

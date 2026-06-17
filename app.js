@@ -86,6 +86,7 @@ function eliminarUsuario(tarjeta,id){
 }
 
 function editarUsuario(tarjeta,usuario){
+    
     document.getElementById("cedula").value = usuario.id;
     document.getElementById("name").value = usuario.name; 
     document.getElementById("email").value = usuario.email;
