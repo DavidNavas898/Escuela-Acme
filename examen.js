@@ -1,6 +1,7 @@
 let examenesDB = JSON.parse(localStorage.getItem("examenes")) || [];
 let contadorPreguntas = 1;
 examenesDB.forEach(examen => mostrarTarjeta(examen));
+let codigoEditando = null;
 
 
 function crearExamen(){
@@ -97,6 +98,18 @@ function limpiarFormulario(){
     document.getElementById("tiempo").value = "";
     document.getElementById("porcentaje").value = "";
     document.getElementById("descripcion").value = "";
+    
+    document.querySelectorAll(".pregunta-text").forEach(input => {
+        input.value = "";
+    });
+
+    document.querySelectorAll(".check-text").forEach(input => {
+        input.value = "";
+    });
+
+    document.querySelectorAll(".check-question").forEach(check => {
+        check.checked = false;
+    });
 }
 
 function camposRepetidos(){
@@ -176,7 +189,7 @@ function agregarPreguntas() {
     tarjeta.innerHTML = `
         <div class="main-container-questions-card-title">
             <h6>Pregunta ${contadorPreguntas}</h6>
-            <button type="button">Eliminar</button>
+            <button type="button" class="delete">Eliminar</button>
         </div>
 
         <div class="main-container-questions-card-text">
@@ -222,6 +235,14 @@ function agregarPreguntas() {
     });
 
     configurarBotonesQuitar(tarjeta);
+
+    const btnAgregarRespuesta = tarjeta.querySelector(
+    ".main-container-questions-card-container-questions-button button"
+    );
+
+    btnAgregarRespuesta.addEventListener("click", () => {
+        agregarRespuesta(tarjeta);
+    });
 
 
     contadorPreguntas++;
@@ -310,11 +331,16 @@ function guardarUsuarios() {
 
 function editarExamen(examen){
 
+    const btnActualizar = document.getElementById("crear")
+    
+
     document.getElementById("codigo").value = examen.codigo;
     document.getElementById("titulo").value = examen.titulo;
     document.getElementById("tiempo").value = examen.tiempo;
     document.getElementById("porcentaje").value = examen.porcentaje;
     document.getElementById("descripcion").value = examen.descripcion;
+
+
 
     const contenedor = document.getElementById("contenedor-preguntas");
     contenedor.innerHTML = "";
@@ -327,7 +353,7 @@ function editarExamen(examen){
         tarjeta.innerHTML = `
             <div class="main-container-questions-card-title">
                 <h6>Pregunta ${index + 1}</h6>
-                <button type="button">Eliminar</button>
+                <button type="button" class="delete">Eliminar</button>
             </div>
 
             <div class="main-container-questions-card-text">
@@ -358,12 +384,114 @@ function editarExamen(examen){
                        class="check-text"
                        value="${respuesta.texto}">
 
-                <button type="button">Quitar</button>
+                <button type="button" class="gray">Quitar</button>
             `;
 
             section.append(opcion);
         });
 
         contenedor.append(tarjeta);
+        const botonEliminar = tarjeta.querySelector(".main-container-questions-card-title button");
+    
+
+        botonEliminar.addEventListener("click", () => {
+        tarjeta.remove();
+        actualizarNumeracion()
+        });
+
+        codigoEditando = examen.codigo;
+
+        btnActualizar.textContent = "Actualizar"
+        btnActualizar.setAttribute("onclick","actualizarExamen()")
     });
+}
+
+function agregarRespuesta(tarjeta) {
+
+    
+
+    const section = tarjeta.querySelector(
+        ".main-container-questions-card-container-questions section"
+    );
+
+    const contenedorRespuesta = document.createElement("div");
+    contenedorRespuesta.classList.add("main-container-questions-card-options");
+
+    contenedorRespuesta.innerHTML = `
+        <input type="checkbox" class="check-question">
+        <input type="text" class="check-text" placeholder="Escribe la respuesta aqui">
+        <button type="button">Quitar</button>
+    `;
+
+    section.insertBefore(
+        contenedorRespuesta,
+        section.querySelector(".main-container-questions-card-container-questions-button")
+    );
+
+    contenedorRespuesta.querySelector("button").addEventListener("click", () => {
+
+        const respuestas = tarjeta.querySelectorAll(
+            ".main-container-questions-card-options"
+        );
+
+        if (respuestas.length <= 1) {
+            alert("La pregunta debe tener al menos una respuesta.");
+            return;
+        }
+
+        contenedorRespuesta.remove();
+    });
+
+}
+
+function actualizarExamen(){
+
+    let bancoPreguntas = [];
+
+    document.querySelectorAll(".main-container-questions-card").forEach(tarjeta => {
+
+        const textoPregunta = tarjeta.querySelector(".pregunta-text").value;
+
+        let respuestas = [];
+
+        tarjeta.querySelectorAll(".main-container-questions-card-options").forEach(opcion => {
+
+            respuestas.push({
+                texto: opcion.querySelector(".check-text").value,
+                correcta: opcion.querySelector(".check-question").checked
+            });
+
+        });
+
+        bancoPreguntas.push({
+            texto: textoPregunta,
+            respuestas: respuestas
+        });
+
+    });
+
+    const indice = examenesDB.findIndex(e => e.codigo == codigoEditando);
+
+    examenesDB[indice] = {
+        codigo: document.getElementById("codigo").value,
+        titulo: document.getElementById("titulo").value,
+        tiempo: document.getElementById("tiempo").value,
+        porcentaje: document.getElementById("porcentaje").value,
+        descripcion: document.getElementById("descripcion").value,
+        preguntas: bancoPreguntas
+    };
+
+    guardarUsuarios();
+
+    document.getElementById("examenes").innerHTML = "";
+
+    examenesDB.forEach(examen => mostrarTarjeta(examen));
+
+    limpiarFormulario();
+
+    const btnActualizar = document.getElementById("crear");
+    btnActualizar.textContent = "Crear";
+    btnActualizar.setAttribute("onclick", "crearExamen()");
+
+    codigoEditando = null;
 }

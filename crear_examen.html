@@ -13,7 +13,15 @@
             <i class="ti ti-menu-2"></i>
             <h5>AcmeSchool</h5>
         </div>
-        <i class="ti ti-user-circle"></i>
+
+        <div class="header-buttons-mid">
+            <button>Resolver Examen</button>
+            <button>Examenes</button>
+            <button>Usuarios</button>
+        </div>
+
+        <button class="header-buttons-out">Salir</button>
+        
     </header>
     <main class="main">
         <section class="main-head">
@@ -21,65 +29,62 @@
             <h1>Gestion de examenes</h1>
             <p id="main-head-subtitle">Configurar examenes, preguntas y respuestas. Cada pregunta admite una unica respuesta correcta.</p>
         </section>
-        <section class="main-container-top">
-            <div class="main-container-top-form">
-                <h5>Crear Examen</h5>
-                <form action="">
-                    <label for="code">Codigo</label>
-                    <input type="text" id="codigo" placeholder="Ej. JS-101" required>
-                    <span class="error" id="error-codigo"></span>
-                    <label for="title">Titulo</label>
-                    <input type="text" id="titulo" placeholder="Ej. Fundamentos JS" required>
-                    <span class="error" id="error-titulo"></span>
-                    <div class="main-container-top-form-grid-inputs">
-                        <div class="main-container-top-form-grid-inputs-cards">
-                            <label for="time">Tiempo (Minutos)</label>
-                            <input type="number" id="tiempo" placeholder="10" required min="1">
-                            <span class="error" id="error-tiempo"></span>
+        <section class="desktop-container">
+            <section class="main-container-top">
+                <div class="main-container-top-form">
+                    <h5>Crear Examen</h5>
+                    <form action="">
+                        <label for="code">Codigo</label>
+                        <input type="text" id="codigo" placeholder="Ej. JS-101" required>
+                        <span class="error" id="error-codigo"></span>
+                        <label for="title">Titulo</label>
+                        <input type="text" id="titulo" placeholder="Ej. Fundamentos JS" required>
+                        <span class="error" id="error-titulo"></span>
+                        <div class="main-container-top-form-grid-inputs">
+                            <div class="main-container-top-form-grid-inputs-cards">
+                                <label for="time">Tiempo (Minutos)</label>
+                                <input type="number" id="tiempo" placeholder="10" required min="1">
+                                <span class="error" id="error-tiempo"></span>
+                            </div>
+                            <div class="main-container-top-form-grid-inputs-cards">
+                                <label for="telefono">Porcentaje de aprobacion</label>
+                                <input type="tel" id="porcentaje" placeholder="100" required>
+                                <span class="error" id="error-porcentaje"></span>
+                            </div>
                         </div>
-                        <div class="main-container-top-form-grid-inputs-cards">
-                            <label for="telefono">Porcentaje de aprobacion</label>
-                            <input type="tel" id="porcentaje" placeholder="100" required>
-                            <span class="error" id="error-porcentaje"></span>
+                         <div class="main-container-top-form-grid-inputs-text-area">
+                                <label for="desc">Descripcion del examen</label>
+                                <textarea name="desc" id="descripcion" placeholder="Descripcion del examen..." rows="4" cols="30"></textarea>
+                                <span class="error" id="error-descripcion"></span>
                         </div>
-                    </div>
-                     <div class="main-container-top-form-grid-inputs-text-area">
-                            <label for="desc">Descripcion del examen</label>
-                            <textarea name="desc" id="descripcion" placeholder="Descripcion del examen..." rows="4" cols="30"></textarea>
-                            <span class="error" id="error-descripcion"></span>
-                    </div>
-                    <section class="main-container-questions">
-                        <div class="main-container-questions-title">
-                            <h6>Preguntas</h6> <button type="button" onclick="agregarPreguntas()">Agregar preguntas</button>
+                        <section class="main-container-questions">
+                            <div class="main-container-questions-title">
+                                <h6>Preguntas</h6> <button type="button" onclick="agregarPreguntas()" id ="btnAgregar">Agregar preguntas</button>
+                            </div>
+                            <div id="contenedor-preguntas"></div>
+                        </section>
+            
+                        <div id="main-container-bottom-form">
+                            <div class="main-container-bottom-left">
+                                <button type="button" onclick="crearExamen()" id="crear">Crear Examen</button>
+                            </div>
+                            <div class="main-container-bottom-right">
+                                <button type="button" onclick="limpiarFormulario()" id="limpiar" >Limpiar</button>
+                            </div>
                         </div>
-                        <div id="contenedor-preguntas"></div>
-
-                        
-
-                            
-                    </section>
-                    
-                    <div id="main-container-bottom-form">
-                        <div class="main-container-bottom-left">
-                            <button type="button" onclick="crearExamen()" id="crear">Crear Examen</button>
-                        </div>
-                        <div class="main-container-bottom-right">
-                            <button type="button" onclick="limpiarFormulario()" id="limpiar" >Limpiar</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </section>
-
-        <section class="main-container-bottom">
-            <div class="users">
-                <div class="users-top">
-                    <h6>Examenes registrados</h6>
-                    <p>0 registros</p>
+                    </form>
                 </div>
-                <div id="examenes"></div>
-            </div>
-         </section>
+            </section>
+            <section class="main-container-bottom">
+                <div class="users">
+                    <div class="users-top">
+                        <h6>Examenes registrados</h6>
+                        <p>0 registros</p>
+                    </div>
+                    <div id="examenes"></div>
+                </div>
+             </section>
+        </section>
     </main>
     <script src="examen.js"></script>
 </body>

@@ -102,6 +102,7 @@ body{
     width: 92%;
     border: 0.5px solid gray;
     border-radius: 0.5rem;
+    margin: 0 auto;
 }
 
 .main-container-top-form h5{
@@ -139,6 +140,7 @@ form input{
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
     font-weight: bold;
+    margin: 0 auto;
 }
 
 .main-container-top-form-grid-inputs-cards{
@@ -218,6 +220,7 @@ select{
     background-color: rgb(235, 230, 230);
     width: 90%;
     border-left: 4px groove black;
+    margin-bottom: .8rem;
 }
 
 .tarjeta-usuario:hover {
@@ -262,6 +265,14 @@ select{
     background-color: red;
     color: white;
     font-weight: bold;
+    border-radius: .5rem;
+    padding:  0 1rem;
+}
+
+.delete:hover{
+    transform: scale(1.050);
+    transition: all 0.3s ease-in;
+    cursor: pointer;
 }
 
 .edit{
@@ -289,13 +300,16 @@ select{
 }
 
 .main-container-top-form-grid-inputs-text-area{
-    width: 92%;
+    width: 95%;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
 }
 
 textarea {
   resize: none;
+  width: 100%;
 }
 
 .main-container-questions{
@@ -379,6 +393,7 @@ textarea {
     border-radius: 0.25rem;
     border: 1px solid #6b7280;
     margin-bottom: .5rem;
+    margin-top: 1rem;
 }
 
 .users-top{
@@ -412,10 +427,16 @@ textarea {
     border-radius: .5rem;
 }
 
+.main-container-questions{
+    width: 90%;
+    margin: 0 auto;
+}
+
 .main-container-questions-title{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
 }
 
 .main-container-questions-title button{
@@ -423,4 +444,232 @@ textarea {
     padding: .5rem;
     border-radius: .4rem;
     margin: .8rem 0;
+}
+
+#btnAgregar{
+    background-color: white;
+    
+}
+
+#btnAgregar:hover{
+    transform: scale(1.050);
+    transition: all 0.3s ease-in;
+    cursor: pointer;
+    background-color: #f0ea72;
+    border-color: black;
+}
+
+.gray{
+    background-color: rgb(184, 175, 175);
+    border-radius: .5rem;
+    padding: 0.4rem 1rem;
+}
+
+.gray:hover{
+    transform: scale(1.050);
+    transition: all 0.3s ease-in;
+    cursor: pointer;
+    background-color: white;
+    font-weight: bold;
+}
+
+.header-buttons-mid{
+    display: none;
+}
+
+.header-buttons-out{
+    display: none;
+}
+
+/* ========================= */
+/* DESKTOP 1024px EN ADELANTE */
+/* ========================= */
+
+@media (min-width: 1024px) {
+
+    body{
+        min-width: 100%;
+    }
+
+    .header{
+        padding: 0 3rem;
+    }
+
+    .header-left i{
+        display: none;
+    }
+
+    .header-buttons-mid{
+        display: flex;
+        gap: 1rem;
+    }
+
+    .header-buttons-mid button{
+        background: transparent;
+        border: none;
+        padding: .5rem 1rem;
+        border-radius: .4rem;
+        cursor: pointer;
+        font-family: var(--font);
+    }
+
+    .header-buttons-mid button:hover{
+        background: #111827;
+        color: white;
+    }
+
+    .header-buttons-out{
+        display: block;
+        padding: .4rem 1rem;
+        border-radius: .4rem;
+        border: 1px solid #d1d5db;
+        background: white;
+        cursor: pointer;
+    }
+
+    .main{
+        width: 90%;
+        margin: auto;
+        grid-template-rows: 120px auto;
+    }
+
+    .main-head{
+        width: 90%;
+    }
+
+    .main-head h1{
+        font-size: 2.2rem;
+    }
+
+    .main-head p{
+        font-size: .9rem;
+    }
+
+    #main-head-subtitle{
+        font-size: .85rem;
+    }
+
+    /* Contenedor principal */
+
+    .main-container-top{
+        width: 100%;
+        grid-template-columns: 38% 60%;
+        gap: 2%;
+        align-items: start;
+    }
+
+    .main-container-top-form{
+        width: 100%;
+    }
+
+    .main-container-bottom{
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .users{
+        width: 100%;
+        margin: 0;
+    }
+
+    /* Inputs superiores */
+
+    form label{
+        font-size: .8rem;
+    }
+
+    form input{
+        font-size: .9rem;
+        padding: .6rem;
+    }
+
+    input::placeholder{
+        font-size: .8rem;
+    }
+
+    textarea{
+        padding: .6rem;
+        font-size: .9rem;
+    }
+
+    /* Código y título lado a lado */
+
+    form{
+
+        align-items: stretch;
+    }
+
+    form>label:nth-of-type(1),
+    form>label:nth-of-type(2),
+    form>input:nth-of-type(1),
+    form>input:nth-of-type(2){
+        width: 92%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .main-container-top-form-grid-inputs{
+        margin-bottom: 1rem;
+    }
+
+    /* Preguntas */
+
+    .main-container-questions-card{
+        padding-top: .5rem;
+    }
+
+    .main-container-questions-card-options{
+        gap: .5rem;
+    }
+
+    .check-question{
+        width: 4%;
+    }
+
+    .check-text{
+        width: 90%;
+    }
+
+    /* Botones */
+
+    #main-container-bottom-form{
+        justify-content: flex-end;
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    #main-container-bottom-form button{
+        padding: .7rem 1.5rem;
+    }
+
+    /* Tarjetas */
+
+    .tarjeta-usuario{
+
+        width: 96%;
+        background: white;
+        border-left: 4px solid black;
+    }
+
+    .botones{
+        width: 180px;
+    }
+
+    .users-top{
+        align-items: center;
+    }
+
+    .users-top h6{
+        font-size: 1rem;
+    }
+
+    .desktop-container{
+        width: 90%;
+        margin: auto;
+        display: grid;
+        grid-template-columns: 36% 62%;
+        gap: 2%;
+        align-items: start;
+    }
+
 }
