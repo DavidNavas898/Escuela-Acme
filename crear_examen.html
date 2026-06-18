@@ -43,12 +43,12 @@
                         <div class="main-container-top-form-grid-inputs">
                             <div class="main-container-top-form-grid-inputs-cards">
                                 <label for="time">Tiempo (Minutos)</label>
-                                <input type="number" id="tiempo" placeholder="10" required min="1">
+                                <input type="number" id="tiempo" placeholder="Maximo 60 min" required min="1" max="60">
                                 <span class="error" id="error-tiempo"></span>
                             </div>
                             <div class="main-container-top-form-grid-inputs-cards">
                                 <label for="telefono">Porcentaje de aprobacion</label>
-                                <input type="tel" id="porcentaje" placeholder="100" required>
+                                <input type="number" id="porcentaje" placeholder="100%" required min="0" max="100">
                                 <span class="error" id="error-porcentaje"></span>
                             </div>
                         </div>
