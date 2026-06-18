@@ -1,3 +1,10 @@
+(function verificarSesion(){
+    const sesion = JSON.parse(sessionStorage.getItem('sesionActiva')) || null;
+    if (!sesion || !sesion.logueado) {
+        window.location.href = 'login.html';
+    }
+})();
+
 let examenesDB = JSON.parse(localStorage.getItem("examenes")) || [];
 let contadorPreguntas = 1;
 examenesDB.forEach(examen => mostrarTarjeta(examen));
