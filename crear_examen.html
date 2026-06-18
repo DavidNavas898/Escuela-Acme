@@ -15,13 +15,12 @@
         </div>
 
         <div class="header-buttons-mid">
-            <button>Resolver Examen</button>
-            <button>Examenes</button>
-            <button>Usuarios</button>
+                <button onclick="window.location.href='resolver.html'">Resolver Examen</button>
+                <button onclick="window.location.href='crear_examen.html'">Examenes</button>
+                <button onclick="window.location.href='gestion_usuarios.html'">Usuarios</button>
         </div>
 
-        <button class="header-buttons-out">Salir</button>
-        
+        <button class="header-buttons-out" onclick="window.location.href='login.html'">Salir</button>
     </header>
     <main class="main">
         <section class="main-head">
@@ -43,12 +42,12 @@
                         <div class="main-container-top-form-grid-inputs">
                             <div class="main-container-top-form-grid-inputs-cards">
                                 <label for="time">Tiempo (Minutos)</label>
-                                <input type="number" id="tiempo" placeholder="10" required min="1">
+                                <input type="number" id="tiempo" placeholder="Maximo 60 min" required min="1" max="60">
                                 <span class="error" id="error-tiempo"></span>
                             </div>
                             <div class="main-container-top-form-grid-inputs-cards">
                                 <label for="telefono">Porcentaje de aprobacion</label>
-                                <input type="tel" id="porcentaje" placeholder="100" required>
+                                <input type="number" id="porcentaje" placeholder="100%" required min="0" max="100">
                                 <span class="error" id="error-porcentaje"></span>
                             </div>
                         </div>

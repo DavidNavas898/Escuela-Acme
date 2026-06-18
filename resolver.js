@@ -181,7 +181,7 @@ function detenerCronometro() {
 
 function actualizarReloj() {
     const minutos = Math.floor(tiempoRestante / 60).toString().padStart(2, '0');
-    const segundos = (tiempoRestante % 60).toString().padS0tart(2, '0');
+    const segundos = (tiempoRestante % 60).toString().padStart(2, '0');
     document.getElementById('reloj-examen').textContent = `${minutos}:${segundos}`;
 }
 

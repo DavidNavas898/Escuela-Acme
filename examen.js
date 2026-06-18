@@ -14,6 +14,15 @@ let codigoEditando = null;
 function crearExamen(){
     let bancoPreguntas = []
 
+    const preguntas = document.querySelectorAll(
+    ".main-container-questions-card"
+    );
+
+    if(preguntas.length === 0){
+        alert("Debe agregar al menos una pregunta");
+        return;
+    }
+
     if(!validarExamen()){
         return;
     }
@@ -66,7 +75,7 @@ function crearExamen(){
     };
 
     examenesDB.push(examen);
-    guardarUsuarios();
+    guardarExamen();
     localStorage.setItem("examenes",JSON.stringify(examenesDB));
     mostrarTarjeta(examen)
 
@@ -96,6 +105,22 @@ function validarExamen(){
         }
     })
 
+    const porcentaje = Number(document.getElementById("porcentaje").value);
+
+    if(porcentaje < 0 || porcentaje > 100){
+        document.getElementById("error-porcentaje").textContent ="El porcentaje debe estar entre 0 y 100";
+        valido = false;
+    }
+
+    const tiempo = Number(
+        document.getElementById("tiempo").value
+    );
+
+    if(tiempo <= 0){
+        document.getElementById("error-tiempo").textContent ="El tiempo debe ser mayor a 0";
+        valido = false;
+    }
+
     return valido;
 }
 
@@ -117,6 +142,10 @@ function limpiarFormulario(){
     document.querySelectorAll(".check-question").forEach(check => {
         check.checked = false;
     });
+
+    document.getElementById("contenedor-preguntas").innerHTML = "";
+
+    contadorPreguntas = 1;
 }
 
 function camposRepetidos(){
@@ -167,7 +196,7 @@ function mostrarTarjeta(examen){
     eliminar.textContent = "Eliminar"
     eliminar.classList.add("delete")
     eliminar.addEventListener("click", ()=>{
-        eliminarUsuario(tarjeta,examen.codigo)
+        eliminarExamen(tarjeta,examen.codigo)
     })
 
    
@@ -206,24 +235,24 @@ function agregarPreguntas() {
          <div class="main-container-questions-card-container-questions">
             <section>
                 <div class="main-container-questions-card-options">
-                    <input type="checkbox" name="check" class="check-question" >
+                    <input type="radio" name= "pregunta-${contadorPreguntas}" class="check-question">
                     <input type="text" class="check-text" placeholder="Escribe la pregunta aqui">
                     <button>Quitar</button>
                 </div>
 
                 <div class="main-container-questions-card-options">
-                    <input type="checkbox" name="check" class="check-question" >
+                    <input type="radio" name= "pregunta-${contadorPreguntas}" class="check-question">
                     <input type="text" class="check-text" placeholder="Escribe la pregunta aqui">
                     <button>Quitar</button>
                 </div>     
                 
                     <div class="main-container-questions-card-options">
-                    <input type="checkbox" name="check" class="check-question">
+                    <input type="radio" name= "pregunta-${contadorPreguntas}" class="check-question">
                     <input type="text" class="check-text" placeholder="Escribe la pregunta aqui">
                     <button>Quitar</button>
                 </div> 
                 <div class="main-container-questions-card-container-questions-button">
-                    <button>Agregar respuesta</button>
+                    <button type="button">Agregar respuesta</button>
                 </div>
             </section>
         </div>
@@ -237,8 +266,21 @@ function agregarPreguntas() {
     
 
     botonEliminar.addEventListener("click", () => {
+
+    const preguntas =
+    document.querySelectorAll(
+        ".main-container-questions-card"
+    );
+
+    if(preguntas.length <= 1){
+        alert(
+            "El examen debe tener al menos una pregunta"
+        );
+        return;
+    }
+
     tarjeta.remove();
-    actualizarNumeracion()
+    actualizarNumeracion();
     });
 
     configurarBotonesQuitar(tarjeta);
@@ -323,16 +365,16 @@ function configurarBotonesQuitar(tarjeta){
 
 }
 
-function eliminarUsuario(tarjeta,codigo){
+function eliminarExamen(tarjeta,codigo){
     tarjeta.remove()
 
     examenesDB = examenesDB.filter(e => e.codigo != codigo);
-    guardarUsuarios()
+    guardarExamen()
 
     document.querySelector(".users-top p").textContent = `${examenesDB.length} registros`;
 }
 
-function guardarUsuarios() {
+function guardarExamen() {
     localStorage.setItem("examenes", JSON.stringify(examenesDB));
 }
 
@@ -410,6 +452,8 @@ function editarExamen(examen){
 
         btnActualizar.textContent = "Actualizar"
         btnActualizar.setAttribute("onclick","actualizarExamen()")
+
+        contadorPreguntas = examen.preguntas.length + 1;
     });
 }
 
@@ -421,14 +465,19 @@ function agregarRespuesta(tarjeta) {
         ".main-container-questions-card-container-questions section"
     );
 
+
     const contenedorRespuesta = document.createElement("div");
     contenedorRespuesta.classList.add("main-container-questions-card-options");
 
+    const nombreGrupo =
+    tarjeta.querySelector(".check-question").name;
+
     contenedorRespuesta.innerHTML = `
-        <input type="checkbox" class="check-question">
-        <input type="text" class="check-text" placeholder="Escribe la respuesta aqui">
-        <button type="button">Quitar</button>
-    `;
+    <input type="radio" name="${nombreGrupo}" class="check-question">
+
+    <input type="text" class="check-text" placeholder="Escribe la respuesta aqui">
+
+    <button type="button">Quitar</button>`;
 
     section.insertBefore(
         contenedorRespuesta,
@@ -477,6 +526,16 @@ function actualizarExamen(){
 
     });
 
+
+    const nuevoCodigo = document.getElementById("codigo").value;
+
+    const existe = examenesDB.some(e => e.codigo === nuevoCodigo && e.codigo !== codigoEditando);
+
+    if(existe){
+        alert("Ya existe un examen con ese codigo");
+        return;
+    }
+
     const indice = examenesDB.findIndex(e => e.codigo == codigoEditando);
 
     examenesDB[indice] = {
@@ -488,7 +547,7 @@ function actualizarExamen(){
         preguntas: bancoPreguntas
     };
 
-    guardarUsuarios();
+    guardarExamen();
 
     document.getElementById("examenes").innerHTML = "";
 
@@ -501,4 +560,5 @@ function actualizarExamen(){
     btnActualizar.setAttribute("onclick", "crearExamen()");
 
     codigoEditando = null;
+    
 }

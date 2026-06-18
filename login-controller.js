@@ -26,7 +26,7 @@ if (miFormulario) {
         const correoIngresado = document.getElementById('email').value;
         const claveIngresada = document.getElementById('password').value;
 
-        let listaUsuarios = JSON.parse(localStorage.getItem('usuario'))|| [];
+        let listaUsuarios = JSON.parse(localStorage.getItem('usuarios'))|| [];
         const userAdmin = {
         id: "1234567890",
         name: "admin",
