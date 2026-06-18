@@ -32,6 +32,7 @@ function crearUsuario(){
 }
 
 function validarFormulario(){
+
     const campos = [
         {input: document.getElementById("cedula"), error: document.getElementById("error-cedula"), mensaje: "*La cedula es obligatoria"},
         {input: document.getElementById("name"), error: document.getElementById("error-name"), mensaje: "*El nombre es obligatorio"},
@@ -46,17 +47,24 @@ function validarFormulario(){
         if(!p.input.value.trim()){
             p.input.classList.add("inputError");
             p.error.textContent = p.mensaje;
-            valido = false
+            valido = false;
         }else{
-            p.input.classList.remove("inputError")
-            p.error.textContent = ""
+            p.input.classList.remove("inputError");
+            p.error.textContent = "";
         }
-    })
+    });
+
+    const password = document.getElementById("password");
+    const errorPassword = document.getElementById("error-password");
+
+    if(password.value.length < 8){
+        password.classList.add("inputError");
+        errorPassword.textContent =
+        "*La contraseña debe tener mínimo 8 caracteres";
+        valido = false;
+    }
 
     return valido;
-
-
-
 }
 
 function camposRepetidos(){
@@ -77,6 +85,8 @@ function camposRepetidos(){
 }
 
 function eliminarUsuario(tarjeta,id){
+    if(!confirm("¿Seguro que deseas eliminar este usuario?")) return;
+
     tarjeta.remove()
 
     usuarioDB = usuarioDB.filter(usuario => usuario.id != id);
@@ -98,13 +108,15 @@ function editarUsuario(tarjeta,usuario){
     botonActualizar.classList.add("azul");
     botonActualizar.textContent = "Actualizar";
 
-
     const botonCrear = document.getElementById("crear");
     botonCrear.classList.add("esconder");
 
     const botonLimpiar = document.getElementById("limpiar");
     botonLimpiar.setAttribute("onclick", "locationReload()");
     botonLimpiar.textContent = "Cancelar Edicion"
+
+    const botonActualizarExistente = botonFormulario.querySelector(".azul");
+    if(botonActualizarExistente) botonActualizarExistente.remove();
 
     botonFormulario.append(botonActualizar);
 
@@ -127,8 +139,14 @@ function editarUsuario(tarjeta,usuario){
 
         let campos = tarjeta.querySelectorAll("h6");
         campos[1].textContent = "Nombre: "+ nuevoNombre;
-        campos[2].textContent = "Email: "+ nuevoEmail;
-        campos[3].textContent = "Telefono: "+ nuevoTelefono;
+        campos[2].textContent = "Correo: "+ nuevoEmail;
+        campos[3].textContent = "Teléfono: "+ nuevoTelefono;
+
+        const badgeExistente = campos[4].querySelector(".badge");
+        if(badgeExistente){
+            badgeExistente.textContent = nuevoCargo.charAt(0).toUpperCase() + nuevoCargo.slice(1);
+            badgeExistente.className = `badge badge-${nuevoCargo}`;
+        }
 
     });
 }
@@ -139,6 +157,9 @@ function limpiarFormulario(){
     document.getElementById("email").value = "";
     document.getElementById("telefono").value = "";
     document.getElementById("password").value = "";
+    document.getElementById("cargo").value = "administrativo";
+    document.querySelectorAll(".inputError").forEach(el => el.classList.remove("inputError"));
+    document.querySelectorAll(".error").forEach(el => el.textContent = "");
 }
 
 function locationReload(){
@@ -163,7 +184,11 @@ function mostrarTarjeta(usuario){
     tel.textContent = `Teléfono: ${usuario.telefono}`;
 
     const cargoTitulo = document.createElement("h6");
-    cargoTitulo.textContent = `Cargo: ${usuario.cargo}`;
+    const badge = document.createElement("span");
+    badge.textContent = usuario.cargo.charAt(0).toUpperCase() + usuario.cargo.slice(1);
+    badge.classList.add("badge", `badge-${usuario.cargo}`);
+    cargoTitulo.textContent = "Cargo: ";
+    cargoTitulo.appendChild(badge);
 
     const editar = document.createElement("button")
     editar.textContent = "Editar"

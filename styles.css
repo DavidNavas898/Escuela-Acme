@@ -528,9 +528,11 @@ textarea {
     }
 
     .main{
-        width: 90%;
+        width: 100%;
+        height: 100%;
         margin: auto;
         grid-template-rows: 120px auto;
+        
     }
 
     .main-head{
@@ -665,11 +667,15 @@ textarea {
 
     .desktop-container{
         width: 90%;
-        margin: auto;
+        margin: 0 auto;
         display: grid;
         grid-template-columns: 36% 62%;
         gap: 2%;
         align-items: start;
+    }
+
+    .header-left h5{
+        margin-left: 3rem;
     }
 
 }

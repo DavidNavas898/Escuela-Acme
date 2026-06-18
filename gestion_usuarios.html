@@ -13,7 +13,16 @@
             <i class="ti ti-menu-2"></i>
             <h5>AcmeSchool</h5>
         </div>
-        <i class="ti ti-user-circle"></i>
+        <nav class="header-nav">
+            <a href="#" class="header-nav-link">Resolver examen</a>
+            <a href="#" class="header-nav-link active">Usuarios</a>
+            <a href="/crear_examen.html" class="header-nav-link">Exámenes</a>
+        </nav>
+        <div class="header-right">
+            <span class="header-username">Administrador Acme</span>
+            <button class="header-logout">Cerrar sesión</button>
+        </div>
+        <i class="ti ti-user-circle header-icon-mobile"></i>
     </header>
     <main class="main">
         <section class="main-head">
@@ -21,6 +30,7 @@
             <h1>Gestion de usuarios</h1>
             <p id="main-head-subtitle">Crea, actualiza y elimina cuentas con acceso a los modulos privados</p>
         </section>
+        <div class="main-content-desktop">
         <section class="main-container-top">
             <div class="main-container-top-form">
                 <h5>Crear Usuarios</h5>
@@ -47,7 +57,6 @@
                             <select id="cargo" name="cargo">
                             <option value="administrativo">Administrativo</option>
                             <option value="docente">Docente</option>
-                            <option value="estudiante">Estudiante</option>
                             </select>
                         </div>
                         <div class="main-container-top-form-grid-inputs-cards">
@@ -78,6 +87,7 @@
                 </div>
             </div>
         </section>
+        </div>
     </main>
     <script src="app.js"></script>
 </body>
