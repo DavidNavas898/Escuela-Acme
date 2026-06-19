@@ -67,9 +67,9 @@ if (accesoConcedido) {
             };
             sessionStorage.setItem('sesionActiva', JSON.stringify(sesionUsuario));
             if (rolUsuario === 'administrativo') {
-                window.location.href = 'crear_examen.html';
-            } else {
                 window.location.href = 'portaladmin.html';
+            } else {
+                window.location.href = 'crear_examen.html';
             }
         }
     });

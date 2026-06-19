@@ -67,8 +67,8 @@ body {
 
 .card-info {
     flex: 1;
-    background-color: var(--primary);
-    color: var(--card); /* Usamos el color blanco de la tarjeta para el texto sobre fondo oscuro */
+    background-color: #0f172a;
+    color: #f1f5f9;
     padding: 45px;
     display: flex;
     flex-direction: column;
@@ -148,7 +148,7 @@ body {
 
 .btn-submit {
     width: 100%;
-    background-color: var(--primary);
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
     color: var(--card);
     border: none;
     padding: 14px;
@@ -170,4 +170,13 @@ body {
     .card-info, .card-form {
         padding: 30px;
     }
+}
+
+.card-info .accent {
+    display: inline-block;
+    width: 32px;
+    height: 3px;
+    background: #6366f1;
+    border-radius: 2px;
+    margin-bottom: 8px;
 }

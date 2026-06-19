@@ -22,7 +22,7 @@ body {
     min-height: 100vh;
 }
 
-/* ── Navbar ── */
+
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -59,7 +59,6 @@ body {
     min-height: calc(100vh - 56px);
 }
 
-/* ── Listado de exámenes ── */
 .contenedor {
     max-width: 1000px;
     margin: 0 auto;
@@ -154,8 +153,6 @@ body {
 .btn-iniciar-examen:hover {
     opacity: 0.9;
 }
-
-/* ── Modal de datos del estudiante ── */
 .fondo-modal {
     display: none;
     position: fixed;
@@ -232,33 +229,34 @@ body {
     cursor: pointer;
 }
 
-/* ── Resolviendo el examen ── */
 .barra-superior-examen {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 1.5rem;
-    background-color: var(--card);
-    border-bottom: 1px solid var(--border);
+    padding: 12px 16px;
+    background-color: #0f172a;
+    border-bottom: none;
     position: sticky;
     top: 0;
 }
 
 .titulo-examen-activo {
     font-weight: 700;
+    color: #f1f5f9;
 }
 
 .meta-examen-activo {
     font-size: 0.8rem;
-    color: var(--secondary);
+    color: #64748b;
 }
 
 .reloj-examen {
     font-size: 1.3rem;
     font-weight: 700;
-    padding: 0.4rem 0.9rem;
-    border-radius: 0.5rem;
-    background-color: var(--background);
+    padding: 4px 12px;
+    border-radius: 6px;
+    background-color: #1e293b;
+    color: #fbbf24;
 }
 
 .reloj-examen.advertencia {
@@ -326,7 +324,7 @@ body {
 
 .btn-terminar {
     width: 100%;
-    background-color: var(--primary);
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
     color: #fff;
     border: none;
     border-radius: 0.5rem;
