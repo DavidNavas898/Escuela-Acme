@@ -464,3 +464,128 @@ select{
         background: white;
         cursor: pointer;
     }
+
+/* =================
+   RESPONSIVE MÓVIL
+   ================*/
+
+@media (max-width: 1023px) {
+
+    body {
+        min-width: 0;
+    }
+
+    /* Header: ocultar nav y username, mostrar solo logo y salir */
+    .header-nav,
+    .header-right,
+    .header-username {
+        display: none;
+    }
+
+    .header-buttons-out {
+        display: block;
+        font-size: 0.75rem;
+        padding: 0.3rem 0.75rem;
+    }
+
+    /* Main */
+    .main {
+        grid-template-rows: auto;
+        padding: 0;
+        gap: 0.75rem;
+    }
+
+    .main-head {
+        width: 92%;
+        padding: 1rem 0 0.5rem;
+    }
+
+    .main-head h1 {
+        font-size: 1.1rem;
+    }
+
+    .main-head p {
+        font-size: 0.7rem;
+    }
+
+    /* Contenedor desktop: apilado en móvil */
+    .main-content-desktop {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    /* Formulario */
+    .main-container-top {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .main-container-top-form {
+        width: 92%;
+        margin: 0 auto;
+    }
+
+    /* Grid de 2 columnas → 1 columna en móvil */
+    .main-container-top-form-grid-inputs {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    /* Inputs más cómodos al tacto */
+    form input,
+    form select {
+        font-size: 0.85rem;
+        padding: 0.5rem 0.6rem;
+        border-radius: 6px;
+    }
+
+    form label {
+        font-size: 0.7rem;
+    }
+
+    /* Botones del formulario */
+    #main-container-bottom-form {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: stretch;
+        margin: 1rem auto;
+        width: 92%;
+    }
+
+    .main-container-bottom-left button,
+    .main-container-bottom-right button {
+        width: 100%;
+        padding: 0.65rem;
+        font-size: 0.85rem;
+    }
+
+    /* Lista de usuarios */
+    .main-container-bottom {
+        width: 100%;
+    }
+
+    .users {
+        width: 92%;
+        margin: 0 auto 1rem;
+    }
+
+    /* Tarjetas de usuario */
+    .tarjeta-usuario {
+        width: 100%;
+        border-left-width: 3px;
+    }
+
+    /* Botones editar/eliminar: ancho completo en móvil */
+    .botones {
+        width: 100%;
+        margin-left: 0;
+        gap: 0.5rem;
+    }
+
+    .botones button {
+        justify-content: center;
+        font-size: 0.8rem;
+        padding: 0.45rem;
+    }
+}

@@ -680,3 +680,157 @@ textarea {
     }
 
 }
+/* ================
+   RESPONSIVE MÓVIL
+   ================ */
+
+@media (max-width: 1023px) {
+
+    body {
+        min-width: 0;
+    }
+
+    /* Header */
+    .header-buttons-mid,
+    .header-buttons-out {
+        display: none;
+    }
+
+    /* Mostrar solo un botón de salir compacto */
+    .header-buttons-out {
+        display: block;
+        font-size: 0.75rem;
+        padding: 0.3rem 0.75rem;
+    }
+
+    /* Main */
+    .main {
+        grid-template-rows: auto;
+        gap: 0.75rem;
+    }
+
+    .main-head {
+        width: 92%;
+        padding: 1rem 0 0.5rem;
+    }
+
+    .main-head h1 {
+        font-size: 1.1rem;
+    }
+
+    /* Desktop container: apilado */
+    .desktop-container {
+        display: flex;
+        flex-direction: column;
+        width: 92%;
+        margin: 0 auto;
+        gap: 1rem;
+    }
+
+    /* Formulario */
+    .main-container-top {
+        width: 100%;
+    }
+
+    .main-container-top-form {
+        width: 100%;
+        border: 1px solid #d1d5db;
+    }
+
+    /* Grid tiempo/porcentaje: 1 columna en móvil */
+    .main-container-top-form-grid-inputs {
+        grid-template-columns: 1fr;
+        gap: 0;
+        width: 92%;
+    }
+
+    /* Inputs táctiles */
+    form input,
+    textarea {
+        font-size: 0.85rem;
+        padding: 0.5rem 0.6rem;
+        border-radius: 6px;
+    }
+
+    form label {
+        font-size: 0.7rem;
+    }
+
+    /* Textarea descripción */
+    .main-container-top-form-grid-inputs-text-area {
+        width: 92%;
+    }
+
+    textarea {
+        min-height: 80px;
+    }
+
+    /* Sección de preguntas */
+    .main-container-questions {
+        width: 100%;
+    }
+
+    .main-container-questions-title {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .main-container-questions-title button {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Tarjeta de pregunta */
+    .main-container-questions-card {
+        grid-template-rows: auto auto auto;
+    }
+
+    .main-container-questions-card-options {
+        flex-wrap: wrap;
+        gap: 0.4rem;
+    }
+
+    .check-question {
+        width: auto;
+    }
+
+    .check-text {
+        width: calc(100% - 36px);
+        font-size: 0.8rem;
+    }
+
+    /* Botones guardar/limpiar */
+    #main-container-bottom-form {
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 0.75rem 0;
+    }
+
+    #main-container-bottom-form button {
+        width: 100%;
+        padding: 0.65rem;
+        font-size: 0.85rem;
+    }
+
+    /* Lista de exámenes */
+    .users {
+        width: 100%;
+        margin: 0 auto 1rem;
+    }
+
+    .tarjeta-usuario {
+        width: 100%;
+    }
+
+    .botones {
+        width: 100%;
+        margin-left: 0;
+        gap: 0.5rem;
+    }
+
+    .botones button {
+        justify-content: center;
+        font-size: 0.8rem;
+    }
+}
