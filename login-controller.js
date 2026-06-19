@@ -84,3 +84,18 @@ if (accesoConcedido) {
         }
     });
 }
+
+function verificarSesion(){
+    const loginV = sessionStorage.getItem("sesionActiva");
+
+    if (loginV){
+        alert("Sesion iniciada");
+        window.location.href = "/gestion_usuarios.html"
+    }
+
+    
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    verificarSesion();
+});

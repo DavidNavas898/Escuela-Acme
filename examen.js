@@ -18,14 +18,18 @@ function crearExamen(){
     ".main-container-questions-card"
     );
 
-    if(preguntas.length === 0){
-        alert("Debe agregar al menos una pregunta");
+    if (preguntas.length < 1) {
+        alert("El examen debe tener al menos una preguntas.");
         return;
     }
 
     if(!validarExamen()){
         return;
     }
+
+    if (!validarRespuestas()) {
+    return;
+}
 
     if(!validarCheckbox()){
         return;
@@ -502,9 +506,22 @@ function agregarRespuesta(tarjeta) {
 
 function actualizarExamen(){
 
+    const preguntas = document.querySelectorAll(
+        ".main-container-questions-card"
+    );
+
+    if (preguntas.length < 1) {
+        alert("Debe agregar al menos una pregunta.");
+        return;
+    }
+
+    if (!validarRespuestas()) {
+        return;
+    }
+
     let bancoPreguntas = [];
 
-    document.querySelectorAll(".main-container-questions-card").forEach(tarjeta => {
+    preguntas.forEach(tarjeta => {
 
         const textoPregunta = tarjeta.querySelector(".pregunta-text").value;
 
@@ -526,17 +543,20 @@ function actualizarExamen(){
 
     });
 
-
     const nuevoCodigo = document.getElementById("codigo").value;
 
-    const existe = examenesDB.some(e => e.codigo === nuevoCodigo && e.codigo !== codigoEditando);
+    const existe = examenesDB.some(
+        e => e.codigo === nuevoCodigo && e.codigo !== codigoEditando
+    );
 
-    if(existe){
+    if (existe) {
         alert("Ya existe un examen con ese codigo");
         return;
     }
 
-    const indice = examenesDB.findIndex(e => e.codigo == codigoEditando);
+    const indice = examenesDB.findIndex(
+        e => e.codigo == codigoEditando
+    );
 
     examenesDB[indice] = {
         codigo: document.getElementById("codigo").value,
@@ -560,5 +580,25 @@ function actualizarExamen(){
     btnActualizar.setAttribute("onclick", "crearExamen()");
 
     codigoEditando = null;
-    
+}
+
+
+
+function validarRespuestas() {
+
+    const tarjetas = document.querySelectorAll(".main-container-questions-card");
+
+    for (let tarjeta of tarjetas) {
+
+        const respuestas = tarjeta.querySelectorAll(
+            ".main-container-questions-card-options"
+        );
+
+        if (respuestas.length < 2) {
+            alert("Cada pregunta debe tener al menos dos respuestas.");
+            return false;
+        }
+    }
+
+    return true;
 }

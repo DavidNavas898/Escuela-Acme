@@ -233,5 +233,11 @@ usuarioDB.forEach(usuario => {
     mostrarTarjeta(usuario);
 });
 
+function cerrarSesion(){
+    sessionStorage.removeItem("sesionActiva")
+    window.location.href = ("/login.html")
+}
+
 document.querySelector(".users-top p").textContent =
 `${usuarioDB.length} registros`;
+

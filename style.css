@@ -427,7 +427,7 @@ select{
     .main-content-desktop{
         grid-area: content;
         display: grid;
-        grid-template-columns: 480px 1fr;
+        grid-template-columns: 600px 1fr;
         gap: 1.5rem;
         align-items: start;
     }

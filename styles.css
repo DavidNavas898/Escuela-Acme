@@ -562,6 +562,7 @@ textarea {
 
     .main-container-top-form{
         width: 100%;
+        border: 2px groove black;
     }
 
     .main-container-bottom{
