@@ -69,7 +69,7 @@ if (accesoConcedido) {
             if (rolUsuario === 'administrativo') {
                 window.location.href = 'crear_examen.html';
             } else {
-                window.location.href = 'inicio.html';
+                window.location.href = 'portaladmin.html';
             }
         }
     });
@@ -90,7 +90,7 @@ function verificarSesion(){
 
     if (loginV){
         alert("Sesion iniciada");
-        window.location.href = "/gestion_usuarios.html"
+        window.location.href = "gestion_usuarios.html"
     }
 
     

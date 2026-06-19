@@ -235,7 +235,7 @@ usuarioDB.forEach(usuario => {
 
 function cerrarSesion(){
     sessionStorage.removeItem("sesionActiva")
-    window.location.href = ("/login.html")
+    window.location.href = ("   login.html")
 }
 
 document.querySelector(".users-top p").textContent =

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AcmeSchool - Resolver examen</title>
-    <link rel="stylesheet" href="./resolver.css">
+    <link rel="stylesheet" href="./CSS/resolver.css">
 </head>
 <body>
 
@@ -15,9 +15,6 @@
         
     </nav>
 
-    <!-- ════════════════════════════════════════
-         VISTA 1 — LISTADO DE EXÁMENES (pública)
-         ════════════════════════════════════════ -->
     <main class="contenedor" id="vista-listado">
         <div class="encabezado-seccion">
             <div class="titulo-seccion">Exámenes disponibles</div>
@@ -26,9 +23,6 @@
         <div class="cuadricula-examenes" id="cuadricula-examenes"></div>
     </main>
 
-    <!-- ════════════════════════════════════════
-         VISTA 2 — RESOLVIENDO EL EXAMEN
-         ════════════════════════════════════════ -->
     <main class="vista-oculta" id="vista-resolviendo">
         <div class="barra-superior-examen">
             <div>
@@ -39,10 +33,6 @@
         </div>
         <div class="cuerpo-examen" id="cuerpo-examen"></div>
     </main>
-
-    <!-- ════════════════════════════════════════
-         VISTA 3 — RESULTADO DEL EXAMEN
-         ════════════════════════════════════════ -->
     <main class="vista-oculta vista-centrada" id="vista-resultado">
         <div class="tarjeta-resultado">
             <div class="puntuacion-resultado" id="puntuacion-resultado">0%</div>
@@ -51,10 +41,6 @@
             <button class="btn-volver" id="btn-volver-listado">Volver al listado</button>
         </div>
     </main>
-
-    <!-- ════════════════════════════════════════
-         MODAL — DATOS DEL ESTUDIANTE
-         ════════════════════════════════════════ -->
     <div class="fondo-modal" id="modal-estudiante">
         <div class="ventana-modal">
             <h3 id="titulo-modal-examen">Nombre del examen</h3>
@@ -79,6 +65,6 @@
 
     <div id="notificacion"></div>
 
-    <script src="./resolver.js"></script>
+    <script src="./JS/resolver.js"></script>
 </body>
 </html>
