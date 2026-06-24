@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estudiante</title>
+    <link rel="stylesheet" href="./CSS/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-left">
+            <i class="ti ti-menu-2"></i>
+            <h5>AcmeSchool</h5>
+        </div>
+        <nav class="header-nav">
+            <a href="./resolver.html" class="header-nav-link">Resolver examen</a>
+            <a href="./gestion_usuarios.html" class="header-nav-link active">Usuarios</a>
+            <a href="./crear_examen.html" class="header-nav-link">Exámenes</a>
+            <a href="./Estudiantes.html" class="header-nav-link active">Estudiantes</a>
+            
+        </nav>      
+        <div class="header-right">
+            <span class="header-username">Administrador Acme</span>
+            <button class="header-buttons-out" onclick="cerrarSesion()">Cerrar sesion</button>
+        </div>
+        <i class="ti ti-user-circle header-icon-mobile"></i>
+    </header>
+    <main class="main">
+        <section class="main-head">
+            <p id="main-head-gris">Administrador / Usuarios</p>
+            <h1>Gestion de Estudiantes</h1>
+            <p id="main-head-subtitle">Crea, actualiza y elimina cuentas con acceso a los modulos privados</p>
+        </section>
+        <div class="main-content-desktop">
+        <section class="main-container-top">
+            <div class="main-container-top-form">
+                <h5>Crear Estudiante</h5>
+                <form action="">
+                    <label for="name">Numero de identificacion</label>
+                    <input type="text" id="cedula" placeholder="Ej. 1123800585" required>
+                    <span class="error" id="error-cedula"></span>
+                    <label for="name">Nombre</label>
+                    <input type="text" id="name" placeholder="Ej. David Navas" required>
+                    <span class="error" id="error-name"></span>
+                    <div class="main-container-top-form-grid-inputs">
+                        <div class="main-container-top-form-grid-inputs-cards">
+                            <label for="email">Correo</label>
+                            <input type="email" id="email" placeholder="david@gmail.com" required>
+                            <span class="error" id="error-email"></span>
+                        </div>
+                        <div class="main-container-top-form-grid-inputs-cards">
+                            <label for="telefono">Telefono</label>
+                            <input type="tel" id="telefono" placeholder="3053518339" required>
+                            <span class="error" id="error-telefono"></span>
+                        </div>
+                        <div class="main-container-top-form-grid-inputs-cards">
+                            <label for="name">Genero</label>
+                            <select id="genero" name="genero">
+                            <option value="masculino">masculino</option>
+                            <option value="femenino">femenino</option>
+                            </select>
+                        </div>
+                        <div class="main-container-top-form-grid-inputs-cards">
+                            <label for="name">Contraseña</label>
+                            <input type="password" id="password" placeholder="********" required>
+                            <span class="error" id="error-password"></span>
+                        </div>
+                    </div>
+                    <div id="main-container-bottom-form">
+                        <div class="main-container-bottom-left">
+                            <button type="button" onclick="limpiarFormulario()" id="limpiar">Limpiar</button>
+                        </div>
+                        <div class="main-container-bottom-right">
+                            <button type="button" onclick="crearUsuario()" id="crear">Crear Usuario</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+        <section class="main-container-bottom">
+            <div class="users">
+                <div class="users-top">
+                    <h6>Usuarios registrados</h6>
+                    <p>0 registros</p>
+                </div>
+                <div id="resultado">
+
+                </div>
+            </div>
+        </section>
+        </div>
+    </main>
+    <script src="./JS/auth.js"></script>
+    <script src="./JS/app.js"></script>>
+</body>
+</html>

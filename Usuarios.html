@@ -17,6 +17,8 @@
             <a href="./resolver.html" class="header-nav-link">Resolver examen</a>
             <a href="./gestion_usuarios.html" class="header-nav-link active">Usuarios</a>
             <a href="./crear_examen.html" class="header-nav-link">Exámenes</a>
+            <a href="./Estudiantes.html" class="header-nav-link active">Estudiantes</a>
+
         </nav>      
         <div class="header-right">
             <span class="header-username">Administrador Acme</span>
@@ -27,42 +29,38 @@
     <main class="main">
         <section class="main-head">
             <p id="main-head-gris">Administrador / Usuarios</p>
-            <h1>Gestion de usuarios</h1>
-            <p id="main-head-subtitle">Crea, actualiza y elimina cuentas con acceso a los modulos privados</p>
+            <h1>Gestion de Estudiantes</h1>
+            <p id="main-head-subtitle">Crea, actualiza y elimina cuentas de los estudiantes</p>
         </section>
         <div class="main-content-desktop">
         <section class="main-container-top">
             <div class="main-container-top-form">
-                <h5>Crear Usuarios</h5>
+                <h5>Gestionar Estudiantes</h5>
                 <form action="">
                     <label for="name">Numero de identificacion</label>
                     <input type="text" id="cedula" placeholder="Ej. 1123800585" required>
                     <span class="error" id="error-cedula"></span>
                     <label for="name">Nombre</label>
-                    <input type="text" id="name" placeholder="Ej. David Navas" required>
+                    <input type="text" id="name" placeholder="Ej. Jofran Rodriguez" required>
                     <span class="error" id="error-name"></span>
                     <div class="main-container-top-form-grid-inputs">
                         <div class="main-container-top-form-grid-inputs-cards">
                             <label for="email">Correo</label>
-                            <input type="email" id="email" placeholder="david@gmail.com" required>
+                            <input type="email" id="email" placeholder="Junior@gmail.com" required>
                             <span class="error" id="error-email"></span>
                         </div>
                         <div class="main-container-top-form-grid-inputs-cards">
-                            <label for="telefono">Telefono</label>
-                            <input type="tel" id="telefono" placeholder="3053518339" required>
-                            <span class="error" id="error-telefono"></span>
-                        </div>
-                        <div class="main-container-top-form-grid-inputs-cards">
-                            <label for="name">Cargo</label>
-                            <select id="cargo" name="cargo">
-                            <option value="administrativo">Administrativo</option>
-                            <option value="docente">Docente</option>
+                            <label for="name">Genero</label>
+                            <select id="Genero" name="cargo">
+                            <option value="administrativo">masculino</option>
+                            <option value="docente">femenino</option>
                             </select>
                         </div>
+                        </div>
                         <div class="main-container-top-form-grid-inputs-cards">
-                            <label for="name">Contraseña</label>
-                            <input type="password" id="password" placeholder="********" required>
-                            <span class="error" id="error-password"></span>
+                            <label for="name">fecha de nacimiento</label>
+                            <input type="password" id="Nacimiento" placeholder="00/00/0000">
+                            <span class="error" id="error-nacimiento"></span>
                         </div>
                     </div>
                     <div id="main-container-bottom-form">
@@ -70,7 +68,7 @@
                             <button type="button" onclick="limpiarFormulario()" id="limpiar">Limpiar</button>
                         </div>
                         <div class="main-container-bottom-right">
-                            <button type="button" onclick="crearUsuario()" id="crear">Crear Usuario</button>
+                            <button type="button" onclick="crearUsuario()" id="crear">Crear estudiante</button>
                         </div>
                     </div>
                 </form>
@@ -89,7 +87,7 @@
         </section>
         </div>
     </main>
-    <script src="./JS/auth.js"></script>
-    <script src="./JS/app.js"></script>
+    <script src="JS/app.js"></script>
+
 </body>
 </html>

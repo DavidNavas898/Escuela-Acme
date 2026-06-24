@@ -1,5 +1,3 @@
-
-
 let usuarioDB = JSON.parse(localStorage.getItem("usuarios")) || [];
 const botonFormulario = document.getElementById("main-container-bottom-form")
 
@@ -21,7 +19,7 @@ function crearUsuario(){
         name: document.getElementById("name").value,
         email: document.getElementById("email").value,
         telefono: document.getElementById("telefono").value,
-        genero: document.getElementById("genero").value,
+        cargo: document.getElementById("cargo").value,
         password: document.getElementById("password").value
     };
 
@@ -104,7 +102,7 @@ function editarUsuario(tarjeta,usuario){
     document.getElementById("email").value = usuario.email;
     document.getElementById("telefono").value = usuario.telefono;
     document.getElementById("password").value = usuario.password;
-    document.getElementById("genero").value = usuario.genero;
+    document.getElementById("cargo").value = usuario.cargo;
 
     const botonActualizar = document.createElement("button");
     botonActualizar.classList.add("azul");
@@ -130,12 +128,12 @@ function editarUsuario(tarjeta,usuario){
         let nuevoNombre = document.getElementById("name").value;
         let nuevoEmail = document.getElementById("email").value;
         let nuevoTelefono = document.getElementById("telefono").value;
-        let nuevoCargo = document.getElementById("genero").value;
+        let nuevoCargo = document.getElementById("cargo").value;
 
         usuario.name = nuevoNombre;
         usuario.email = nuevoEmail;
         usuario.telefono = nuevoTelefono;
-        usuario.genero = nuevoGenero;
+        usuario.cargo = nuevoCargo;
 
         guardarUsuarios();
 
@@ -159,7 +157,7 @@ function limpiarFormulario(){
     document.getElementById("email").value = "";
     document.getElementById("telefono").value = "";
     document.getElementById("password").value = "";
-    document.getElementById("genero").value = "Masculino";
+    document.getElementById("cargo").value = "administrativo";
     document.querySelectorAll(".inputError").forEach(el => el.classList.remove("inputError"));
     document.querySelectorAll(".error").forEach(el => el.textContent = "");
 }
@@ -185,12 +183,12 @@ function mostrarTarjeta(usuario){
     const tel = document.createElement("h6");
     tel.textContent = `Teléfono: ${usuario.telefono}`;
 
-    const generoTitulo = document.createElement("h6");
+    const cargoTitulo = document.createElement("h6");
     const badge = document.createElement("span");
-    badge.textContent = usuario.genero.charAt(0).toUpperCase() + usuario.genero.slice(1);
-    badge.classList.add("badge", `badge-${usuario.genero}`);
-    generoTitulo.textContent = "Genero: ";
-    generoTitulo.appendChild(badge);
+    badge.textContent = usuario.cargo.charAt(0).toUpperCase() + usuario.cargo.slice(1);
+    badge.classList.add("badge", `badge-${usuario.cargo}`);
+    cargoTitulo.textContent = "Cargo: ";
+    cargoTitulo.appendChild(badge);
 
     const editar = document.createElement("button")
     editar.textContent = "Editar"
@@ -211,7 +209,7 @@ function mostrarTarjeta(usuario){
     
     divBotones.append(editar,eliminar)
     divBotones.classList.add("botones")
-    tarjeta.append(identificacion,nombre,correo,tel,generoTitulo,divBotones);
+    tarjeta.append(identificacion,nombre,correo,tel,cargoTitulo,divBotones);
 
 
     

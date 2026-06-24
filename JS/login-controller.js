@@ -18,10 +18,8 @@ const miFormulario = document.getElementById('miFormulario');
 if (miFormulario) {
     miFormulario.addEventListener('submit', function() {
         event.preventDefault();
-        if (typeof Swal === 'undefined') {
+        if (typeof 'undefined') {
             console.error('SweetAlert2 no se cargó. Revisa la etiqueta <script> del CDN, el CSP y la conexión de red.');
-            window.alert('No se pudo cargar la librería de alertas. Intenta recargar la página.');
-            return;
         }
         const correoIngresado = document.getElementById('email').value;
         const claveIngresada = document.getElementById('password').value;
